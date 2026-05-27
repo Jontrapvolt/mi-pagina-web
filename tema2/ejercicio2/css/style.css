@@ -1,0 +1,111 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:beige ;
+}
+header {
+    text-align: center;
+    background-color: #f3ebe1;
+    border-bottom: 1px solid #e6d0de ;
+    padding: 50px 10px;
+}
+
+header h1{
+     font-size: 20pt;
+}
+
+header p{
+    font-size: 12pt;
+}
+
+.contenedor{
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+ 
+/*grilla(malla) de 3 columnas*/
+.malla-productos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:30px;
+}
+
+.targeta-producto{
+    background-color: white;
+    border: 5px solid #eadecf;
+    border-radius: 8px;
+
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.imagen-producto{
+    width: 100%;
+    height: 200px;
+}   
+
+.info-producto{
+    display: flex;
+    flex-direction: colum;
+    width: 90%;
+}
+
+.info-producto h3{
+    text-align: center;
+    font-size: 14pt;
+    color: brown;
+}
+
+.info-producto p{
+    font-size: 10pt;
+    color: #807167;
+    flex-grow: 1; 
+    height: 40px;
+}
+
+.compra-producto{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+precio{
+    font-size: 15pt;
+    font-weight: bold;
+    color: blue (129,11, 11);
+}
+
+.boton-compra{
+    background-color: #8c6239;
+    color: white;
+    padding: 8px 20px;
+    font-size: 9pt;
+    font-weight: 600;
+    border-radius:4px
+}
+
+.boton-compra:hover{
+    background-color: #6d4b2a;
+}
+
+footer{
+    text-align: center;
+    font-size: 9pt;
+    background-color: #807167;
+    color: white;
+    padding: 5px 0px;
+}   
+
+@media (max-whidth: 900) {
+    .malla-productos{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-whidth:900) {
+    .malla-productos{
+        grid-template-columns:repeat(2,1fr) ;
+    }
+}
