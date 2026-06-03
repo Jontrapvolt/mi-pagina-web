@@ -1,58 +1,256 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi primera pagina web</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>RunShop | Tienda de Zapatillas</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 <body>
-    <header>
-        <h1>Mi sitio web</h1>
-        <nav>
+
+    <!-- ENCABEZADO -->
+
+    <header class="header">
+
+        <div class="logo">
+            <h1>RUNSHOP</h1>
+        </div>
+
+        <nav class="navbar">
             <ul>
                 <li><a href="#">Inicio</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a hred="#">Contactos</a></li>
+                <li><a href="#">Hombre</a></li>
+                <li><a href="#">Mujer</a></li>
+                <li><a href="#">Niños</a></li>
+                <li><a href="#">Ofertas</a></li>
             </ul>
         </nav>
+
+        <div class="header-buttons">
+
+            <button class="search-btn">
+                <i class="fas fa-search"></i>
+            </button>
+
+            <button class="cart-btn">
+                <i class="fas fa-shopping-cart"></i>
+            </button>
+
+            <a href="tel:+51999999999" class="contact-btn">
+                <i class="fas fa-phone"></i>
+                Contáctanos
+            </a>
+
+        </div>
+
     </header>
-    <main>
-        <section class="contenedor-targetas">
-            <article class="targetas">
-                <h2>Servicio 1</h2>
-                <p>Descripción del servicio 1.</p>
+
+    <!-- CARRUSEL -->
+
+    <section class="carousel">
+
+        <div class="slide active">
+            <img src="img/banner1.jpg" alt="Banner Principal">
+        </div>
+
+        <div class="slide">
+            <img src="img/banner2.jpg" alt="Banner Secundario">
+        </div>
+
+        <div class="slide">
+            <img src="img/banner3.jpg" alt="Banner Promocional">
+        </div>
+
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+
+    </section>
+
+    <!-- BIENVENIDA -->
+
+    <section class="welcome">
+
+        <h2>Las mejores zapatillas para cada paso</h2>
+
+        <p>
+            Descubre los últimos modelos para running,
+            entrenamiento, fútbol y uso urbano.
+        </p>
+
+    </section>
+
+    <!-- PRODUCTOS DESTACADOS -->
+
+    <section class="featured-products">
+
+        <h2>Productos Destacados</h2>
+
+        <div class="products-container">
+
+            <article class="product-card">
+                <img src="img/zapatilla1.jpg" alt="Nike Air Max">
+                <h3>Nike Air Max</h3>
+                <p>S/ 399.90</p>
+                <button>Ver Producto</button>
             </article>
-            <article class="targeta">
-                <h2>Servicio 2</h2>
-                <p>Descripción del servidor 2.</p>
+
+            <article class="product-card">
+                <img src="img/zapatilla2.jpg" alt="Adidas Ultraboost">
+                <h3>Adidas Ultraboost</h3>
+                <p>S/ 499.90</p>
+                <button>Ver Producto</button>
             </article>
-            <article class="targeta">
-                <h2>Servicio 3</h2>
-                <p>Descripción del servicio 3.</p>
+
+            <article class="product-card">
+                <img src="img/zapatilla3.jpg" alt="Puma Velocity">
+                <h3>Puma Velocity</h3>
+                <p>S/ 349.90</p>
+                <button>Ver Producto</button>
             </article>
-        </section>
-        <section class="galeria">
-            <img src="c:\Users\Docente\Downloads\yamaha-mt09-primer-plano.png" alt="imagen 1">
-            <img src="c:\Users\Docente\Downloads\CF_Moto_675SR-R_Galeria4_Galgo_México.png" alt="imagen 2">
-            <img src="c:\Users\Docente\Downloads\10-kawasaki-z900-se-2024-estudio-negro-verde-01.jpg" alt="imagen 3">
-        </section>
-        <section>
-            <h2>Contáctanos</h2>
-            <form>
-                <label for="nombre">Nombre</label>
-                <imput type="text" id="nombre"
-                name="nombre"><br><br>
-                
-                <label for="mensaje">Mensaje:</label><br>
-                <textarea id="mensaje" name="mensaje"
-                rows="4" cols="50"></textarea><br><br>
-                <input type="submit" value="Enviar">
-              </form>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Mi sitio web. Todos los derechos reservados.</p>
+
+            <article class="product-card">
+                <img src="img/zapatilla4.jpg" alt="New Balance 530">
+                <h3>New Balance 530</h3>
+                <p>S/ 429.90</p>
+                <button>Ver Producto</button>
+            </article>
+
+        </div>
+
+    </section>
+
+    <!-- BENEFICIOS -->
+
+    <section class="benefits">
+
+        <div class="benefit">
+            <i class="fas fa-truck"></i>
+            <h3>Envíos a Todo el Perú</h3>
+            <p>Recibe tus pedidos rápidamente.</p>
+        </div>
+
+        <div class="benefit">
+            <i class="fas fa-credit-card"></i>
+            <h3>Pago Seguro</h3>
+            <p>Múltiples métodos de pago.</p>
+        </div>
+
+        <div class="benefit">
+            <i class="fas fa-headset"></i>
+            <h3>Soporte</h3>
+            <p>Atención personalizada.</p>
+        </div>
+
+        <div class="benefit">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Compra Protegida</h3>
+            <p>Seguridad en todas tus compras.</p>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-column">
+            <h3>RUNSHOP</h3>
+            <p>
+                Tienda especializada en zapatillas deportivas
+                para hombres, mujeres y niños.
+            </p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Información</h3>
+            <ul>
+                <li><a href="#">Nosotros</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+                <li><a href="#">Política de Privacidad</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Atención al Cliente</h3>
+            <ul>
+                <li><a href="#">Preguntas Frecuentes</a></li>
+                <li><a href="#">Cambios y Devoluciones</a></li>
+                <li><a href="#">Seguimiento de Pedido</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Libro de Reclamaciones</h3>
+
+            <p>
+                Conforme a la legislación peruana,
+                ponemos a disposición nuestro libro
+                de reclamaciones virtual.
+            </p>
+
+            <a href="#" class="claims-button">
+                Libro de Reclamaciones
+            </a>
+        </div>
+
     </footer>
+
+    <div class="copyright">
+        <p>© 2026 RunShop. Todos los derechos reservados.</p>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const nextBtn = document.querySelector('.next');
+        const prevBtn = document.querySelector('.prev');
+
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            slides[index].classList.add('active');
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentSlide++;
+
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+
+            showSlide(currentSlide);
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide--;
+
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+
+            showSlide(currentSlide);
+        });
+
+        setInterval(() => {
+            currentSlide++;
+
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+
+            showSlide(currentSlide);
+        }, 5000);
+    </script>
+
 </body>
+
 </html>
