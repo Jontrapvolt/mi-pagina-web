@@ -7,6 +7,8 @@
   <title>Gonter | Catálogo de Zapatillas</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
 <body>
 
   <!-- ═══════════════════════════════════════════
@@ -21,9 +23,9 @@
       <ul>
         <li><a href="index.html">Inicio</a></li>
         <li><a href="hombres.html" style="color: var(--white); background: var(--bg-surface);">Catálogo</a></li>
-        <li><a href="index.html#mujer">Mujer</a></li>
-        <li><a href="index.html#ninos">Niños</a></li>
-        <li><a href="index.html#ofertas">Ofertas</a></li>
+        <li><a href="hombres.html?categoria=mujer">Mujer</a></li>
+        <li><a href="hombres.html?categoria=ninos">Niños</a></li>
+        <li><a href="hombres.html?categoria=oferta">Ofertas</a></li>
       </ul>
     </nav>
 
@@ -181,8 +183,7 @@
     <div class="footer-column">
       <h3>Libro de Reclamaciones</h3>
       <p>Conforme a la legislación peruana, ponemos a disposición nuestro libro de reclamaciones virtual.</p>
-      <a href="#" onclick="openInfoModal('reclamaciones'); return false;" class="claims-button">Libro de
-        Reclamaciones</a>
+      <a href="#" onclick="openInfoModal('reclamaciones'); return false;" class="claims-button">Libro de Reclamaciones</a>
     </div>
   </footer>
 
@@ -389,24 +390,24 @@
     let sales = JSON.parse(localStorage.getItem('gonter_sales') || '[]');
     let editingProductId = null;
 
-    // Productos predeterminados (16 en total)
+    // Productos predeterminados (16 en total, bien definidos)
     let products = JSON.parse(localStorage.getItem('gonter_products') || 'null') || [
-      { id: 1, name: 'Nike Air Max 90', price: 429.90, image: 'img/zapatilla1.jpg', category: 'hombre', type: 'urbana', desc: 'Ícono urbano con amortiguación Air.', rating: 4.8, tallas: ['7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
-      { id: 2, name: 'Adidas Ultraboost 23', price: 549.90, image: 'img/zapatilla2.jpg', category: 'hombre', type: 'deportiva', desc: 'Máximo retorno de energía para running.', rating: 4.9, tallas: ['6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
-      { id: 3, name: 'Puma RS-X', price: 379.90, image: 'img/zapatilla3.jpg', category: 'hombre', type: 'urbana', desc: 'Diseño retro con tecnología RS.', rating: 4.5, tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11'] },
-      { id: 4, name: 'New Balance 574', price: 399.90, image: 'img/zapatilla4.jpg', category: 'hombre', type: 'urbana', desc: 'Clásico atemporal para el día a día.', rating: 4.6, tallas: ['4.5', '5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5'] },
-      { id: 5, name: 'Nike Revolution 6', price: 299.90, image: 'img/zapatilla5.jpg', category: 'hombre', type: 'deportiva', desc: 'Ligeras y transpirables para entrenamiento.', rating: 4.7, tallas: ['7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
-      { id: 6, name: 'Adidas Forum Low', price: 469.90, image: 'img/zapatilla6.jpg', category: 'hombre', type: 'urbana', desc: 'Estilo basketball clásico.', rating: 4.4, tallas: ['6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11'] },
-      { id: 7, name: 'Nike Air Force 1', price: 389.90, image: 'img/zapatilla1.jpg', category: 'mujer', type: 'urbana', desc: 'El clásico indiscutible en versión femenina.', rating: 4.8, tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9'] },
-      { id: 8, name: 'Adidas Superstar', price: 349.90, image: 'img/zapatilla2.jpg', category: 'mujer', type: 'urbana', desc: 'Diseño icónico con puntera de concha.', rating: 4.7, tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5'] },
-      { id: 9, name: 'Puma Cali Dream', price: 329.90, image: 'img/zapatilla3.jpg', category: 'mujer', type: 'urbana', desc: 'Estilo californiano con suela plataforma.', rating: 4.5, tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9'] },
-      { id: 10, name: 'New Balance 327', price: 459.90, image: 'img/zapatilla4.jpg', category: 'mujer', type: 'deportiva', desc: 'Retro running con toque moderno.', rating: 4.9, tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5'] },
-      { id: 11, name: 'Nike Court Borough', price: 259.90, image: 'img/zapatilla5.jpg', category: 'ninos', type: 'urbana', desc: 'Resistente y cómoda para el día a día.', rating: 4.6, tallas: ['4.5', '5', '6', '6.5', '7'] },
-      { id: 12, name: 'Adidas Advantage', price: 239.90, image: 'img/zapatilla6.jpg', category: 'ninos', type: 'deportiva', desc: 'Perfecta para educación física.', rating: 4.4, tallas: ['4.5', '5', '6', '6.5', '7', '7.5'] },
-      { id: 13, name: 'Puma Rebound', price: 279.90, image: 'img/zapatilla1.jpg', category: 'ninos', type: 'urbana', desc: 'Estilo urbano juvenil con tecnología cómoda.', rating: 4.3, tallas: ['5', '6', '6.5', '7', '7.5', '8'] },
-      { id: 14, name: 'New Balance 680v6', price: 219.90, image: 'img/zapatilla2.jpg', category: 'ninos', type: 'deportiva', desc: 'Amortiguación Fresh Foam para los más activos.', rating: 4.5, tallas: ['4.5', '5', '6', '6.5', '7'] },
-      { id: 15, name: 'Nike Downshifter 12', price: 199.90, image: 'img/zapatilla3.jpg', category: 'oferta', type: 'deportiva', desc: 'Running accesible con soporte total. 40% OFF', rating: 4.2, tallas: ['7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
-      { id: 16, name: 'Adidas Runfalcon 3', price: 179.90, image: 'img/zapatilla4.jpg', category: 'oferta', type: 'deportiva', desc: 'Ligereza a precio increíble. 35% OFF', rating: 4.1, tallas: ['6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11'] },
+      { id: 1, name: 'Nike Air Max 90', price: 429.90, image: 'img/zapatilla1.jpg', category: 'hombre', type: 'urbana', desc: 'Ícono urbano con amortiguación Air.', tallas: ['7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
+      { id: 2, name: 'Adidas Ultraboost 23', price: 549.90, image: 'img/zapatilla2.jpg', category: 'hombre', type: 'deportiva', desc: 'Máximo retorno de energía para running.', tallas: ['6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
+      { id: 3, name: 'Puma RS-X', price: 379.90, image: 'img/zapatilla3.jpg', category: 'hombre', type: 'urbana', desc: 'Diseño retro con tecnología RS.', tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11'] },
+      { id: 4, name: 'New Balance 574', price: 399.90, image: 'img/zapatilla4.jpg', category: 'hombre', type: 'urbana', desc: 'Clásico atemporal para el día a día.', tallas: ['4.5', '5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5'] },
+      { id: 5, name: 'Nike Air Force 1', price: 389.90, image: 'img/zapatilla5.jpg', category: 'mujer', type: 'urbana', desc: 'El clásico indiscutible en versión femenina.', tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9'] },
+      { id: 6, name: 'Adidas Superstar', price: 349.90, image: 'img/zapatilla6.jpg', category: 'mujer', type: 'urbana', desc: 'Diseño icónico con puntera de concha.', tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5'] },
+      { id: 7, name: 'Puma Cali Dream', price: 329.90, image: 'img/zapatilla7.jpg', category: 'mujer', type: 'urbana', desc: 'Estilo californiano con suela plataforma.', tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9'] },
+      { id: 8, name: 'New Balance 327', price: 459.90, image: 'img/zapatilla8.jpg', category: 'mujer', type: 'deportiva', desc: 'Retro running con toque moderno.', tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5'] },
+      { id: 9, name: 'Nike Court Borough', price: 259.90, image: 'img/zapatilla9.jpg', category: 'ninos', type: 'urbana', desc: 'Resistente y cómoda para el día a día.', tallas: ['4.5', '5', '6', '6.5', '7'] },
+      { id: 10, name: 'Adidas Advantage', price: 239.90, image: 'img/zapatilla10.jpg', category: 'ninos', type: 'deportiva', desc: 'Perfecta para educación física.', tallas: ['4.5', '5', '6', '6.5', '7', '7.5'] },
+      { id: 11, name: 'Puma Rebound', price: 279.90, image: 'img/zapatilla11.jpg', category: 'ninos', type: 'urbana', desc: 'Estilo urbano juvenil con tecnología cómoda.', tallas: ['5', '6', '6.5', '7', '7.5', '8'] },
+      { id: 12, name: 'New Balance 680v6', price: 219.90, image: 'img/zapatilla12.jpg', category: 'ninos', type: 'deportiva', desc: 'Amortiguación Fresh Foam para los más activos.', tallas: ['4.5', '5', '6', '6.5', '7'] },
+      { id: 13, name: 'Nike Downshifter 12', price: 199.90, image: 'img/zapatilla13.jpg', category: 'oferta', type: 'deportiva', desc: 'Running accesible con soporte total. 40% OFF', tallas: ['7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
+      { id: 14, name: 'Adidas Runfalcon 3', price: 179.90, image: 'img/zapatilla14.jpg', category: 'oferta', type: 'deportiva', desc: 'Ligereza a precio increíble. 35% OFF', tallas: ['6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11'] },
+      { id: 15, name: 'Puma Smash v2', price: 149.90, image: 'img/zapatilla15.jpg', category: 'oferta', type: 'urbana', desc: 'Estilo clásico a precio mínimo. 50% OFF', tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5'] },
+      { id: 16, name: 'Reebok Classic Leather', price: 219.90, image: 'img/zapatilla16.jpg', category: 'oferta', type: 'urbana', desc: 'El legendario modelo de los 80s. 30% OFF', tallas: ['6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
     ];
 
     // Filtros activos
@@ -832,7 +833,7 @@
           <div class="order-card">
             <div class="order-header"><span class="order-id">#${o.id}</span><span class="order-status ${o.status}">${o.status}</span></div>
             <p class="order-date">${new Date(o.date).toLocaleDateString()}</p>
-            ${o.items.map(i => `<p class="order-item"><span>${i.name} ${i.talla ? '(Talla: ' + i.talla + ')' : ''} x${i.qty}</span></p>`).join('')}
+            ${o.items.map(i => `<p class="order-item">${i.name} ${i.talla ? '(Talla: ' + i.talla + ')' : ''} x${i.qty}</p>`).join('')}
             <p class="order-total">S/ ${o.total.toFixed(2)}</p>
             <button class="btn-cancel-order" onclick="cancelOrder('${o.id}')"><i class="fas fa-times"></i> Cancelar</button>
           </div>
@@ -844,7 +845,7 @@
             <p class="order-date">${new Date(o.date).toLocaleDateString()}</p>
             <p class="order-total">S/ ${o.total.toFixed(2)}</p>
           </div>
-        `).join('') : '<div class="empty-state success"><i class="fas fa-check-circle"></i><h3>Sin pedidos cancelados</h3></div>';
+        `).join('') : '<div class="empty-state"><i class="fas fa-check-circle"></i><h3>Sin pedidos cancelados</h3></div>';
       }
     }
 
@@ -887,27 +888,18 @@
       closeModal('modalReclamaciones');
       showToast('Reclamación enviada', 'success');
     }
+
+    // Aplicar categoría desde URL
     function aplicarCategoriaDesdeURL() {
       const params = new URLSearchParams(window.location.search);
       const categoria = params.get('categoria');
-
       if (categoria && ['hombre', 'mujer', 'ninos', 'oferta'].includes(categoria)) {
         activeCategory = categoria;
-
-        // Activar visualmente el botón correspondiente
         document.querySelectorAll('.category-option').forEach(btn => {
           btn.classList.remove('active');
-          if (btn.dataset.category === categoria) {
-            btn.classList.add('active');
-          }
+          if (btn.dataset.category === categoria) btn.classList.add('active');
         });
-
-        // Cambiar el título
-        document.getElementById('catalogTitle').textContent =
-          categoria === 'todas' ? 'Catálogo Completo' :
-            categoria.charAt(0).toUpperCase() + categoria.slice(1);
-
-        // Aplicar filtros inmediatamente
+        document.getElementById('catalogTitle').textContent = categoria.charAt(0).toUpperCase() + categoria.slice(1);
         applyFilters();
       }
     }

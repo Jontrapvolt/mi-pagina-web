@@ -10,9 +10,7 @@
 
 <body>
 
-  <!-- ═══════════════════════════════════════════
-       HEADER
-  ════════════════════════════════════════════ -->
+  <!-- HEADER -->
   <header class="header">
     <div class="logo">
       <h1>GONTER</h1>
@@ -64,9 +62,7 @@
     </div>
   </header>
 
-  <!-- ═══════════════════════════════════════════
-       CARRUSEL
-  ════════════════════════════════════════════ -->
+  <!--CARRUSEL-->
   <section class="carousel" id="inicio">
     <div class="slide active">
       <img src="img/banner1.jpg" alt="Banner Principal" />
@@ -97,17 +93,13 @@
     <div class="slide-dots" id="slideDots"></div>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       BIENVENIDA
-  ════════════════════════════════════════════ -->
+  <!--BIENVENIDA -->
   <section class="welcome">
     <h2>Las mejores zapatillas para cada paso</h2>
     <p>Descubre los últimos modelos para running, entrenamiento, fútbol y uso urbano.</p>
   </section>
 
-  <!-- ═══════════════════════════════════════════
-       PRODUCTOS DESTACADOS (con CRUD)
-  ════════════════════════════════════════════ -->
+  <!--PRODUCTOS DESTACADOS (con CRUD) -->
   <section class="featured-products" id="productos">
     <div class="section-header">
       <h2>Productos Destacados</h2>
@@ -123,9 +115,7 @@
   </section>
 
 
-  <!-- ═══════════════════════════════════════════
-       FOOTER
-  ════════════════════════════════════════════ -->
+  <!--FOOTER -->
   <footer class="footer">
     <div class="footer-column">
       <h3>GONTER</h3>
@@ -159,9 +149,7 @@
   </div>
 
 
-  <!-- ═══════════════════════════════════════════
-       MODALES: INFORMACIÓN DEL FOOTER
-  ════════════════════════════════════════════ -->
+  <!-- INFORMACIÓN DEL FOOTER  -->
 
   <!-- NOSOTROS -->
   <div class="modal-overlay hidden" id="modalNosotros">
@@ -329,9 +317,7 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       MODAL: LOGIN / REGISTRO
-  ════════════════════════════════════════════ -->
+  <!--LOGIN  REGISTRO-->
   <div class="modal-overlay hidden" id="authModal">
     <div class="modal-box">
       <button class="modal-close" id="closeAuthModal"><i class="fas fa-times"></i></button>
@@ -431,9 +417,7 @@
   </div>
 
 
-  <!-- ═══════════════════════════════════════════
-       MODAL: CARRITO
-  ════════════════════════════════════════════ -->
+  <!-- MODAL: CARRITO -->
   <div class="modal-overlay hidden" id="cartModal">
     <div class="modal-box cart-modal-box">
       <button class="modal-close" id="closeCartModal"><i class="fas fa-times"></i></button>
@@ -452,9 +436,7 @@
   </div>
 
 
-  <!-- ═══════════════════════════════════════════
-       MODAL: MÉTODO DE PAGO (BETA)
-  ════════════════════════════════════════════ -->
+  <!--MÉTODO DE PAGO (no funciona)-->
   <div class="modal-overlay hidden" id="paymentModal">
     <div class="modal-box">
       <button class="modal-close" id="closePaymentModal"><i class="fas fa-times"></i></button>
@@ -499,9 +481,7 @@
   </div>
 
 
-  <!-- ═══════════════════════════════════════════
-       MODAL: COMPRA CONFIRMADA
-  ════════════════════════════════════════════ -->
+  <!--COMPRA CONFIRMADA -->
   <div class="modal-overlay hidden" id="successModal">
     <div class="modal-box success-modal-box">
       <div class="success-icon"><i class="fas fa-check"></i></div>
@@ -512,9 +492,7 @@
   </div>
 
 
-  <!-- ═══════════════════════════════════════════
-       MODAL: GESTIÓN DE PRODUCTO (CRUD - Admin)
-  ════════════════════════════════════════════ -->
+  <!--GESTIÓN DE PRODUCTO ( Admin)-->
   <div class="modal-overlay hidden" id="productModal">
     <div class="modal-box">
       <button class="modal-close" id="closeProductModal"><i class="fas fa-times"></i></button>
@@ -553,7 +531,6 @@
       <div class="form-group">
         <label>Tallas disponibles</label>
         <div class="tallas-checkbox-grid" id="tallasCheckboxGrid">
-          <!-- Se generan dinámicamente -->
         </div>
       </div>
       <div class="form-group">
@@ -575,9 +552,7 @@
   </div>
 
 
-  <!-- ═══════════════════════════════════════════
-       MODAL: MI CUENTA (CRUD clientes)
-  ════════════════════════════════════════════ -->
+  <!--MODAL: MI CUENTA (CRUD clientes) -->
   <div class="modal-overlay hidden" id="accountModal">
     <div class="modal-box">
       <button class="modal-close" id="closeAccountModal"><i class="fas fa-times"></i></button>
@@ -650,9 +625,7 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       MODAL: MIS PEDIDOS
-  ════════════════════════════════════════════ -->
+  <!--MODAL: MIS PEDIDOS -->
   <div class="modal-overlay hidden" id="ordersModal">
     <div class="modal-box" style="max-width: 700px;">
       <button class="modal-close" onclick="closeModal('ordersModal')"><i class="fas fa-times"></i></button>
@@ -672,9 +645,7 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════════
-       TOAST DE NOTIFICACIONES
-  ════════════════════════════════════════════ -->
+  <!--TOAST DE NOTIFICACIONES -->
   <div class="toast-container" id="toastContainer"></div>
 
 
@@ -683,9 +654,9 @@
   ════════════════════════════════════════════ -->
   <script>
 
-    // ══════════════════════════════════════════
+    // 
     // ESTADO GLOBAL
-    // ══════════════════════════════════════════
+    // 
 
     let currentUser = null;
     let cart = [];
