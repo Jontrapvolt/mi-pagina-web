@@ -2,254 +2,1600 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RunShop | Tienda de Zapatillas</title>
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gonter | Tienda de Zapatillas</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
 <body>
 
-    <!-- ENCABEZADO -->
-
-    <header class="header">
-
-        <div class="logo">
-            <h1>RUNSHOP</h1>
-        </div>
-
-        <nav class="navbar">
-            <ul>
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Hombre</a></li>
-                <li><a href="#">Mujer</a></li>
-                <li><a href="#">Niños</a></li>
-                <li><a href="#">Ofertas</a></li>
-            </ul>
-        </nav>
-
-        <div class="header-buttons">
-
-            <button class="search-btn">
-                <i class="fas fa-search"></i>
-            </button>
-
-            <button class="cart-btn">
-                <i class="fas fa-shopping-cart"></i>
-            </button>
-
-            <a href="tel:+51999999999" class="contact-btn">
-                <i class="fas fa-phone"></i>
-                Contáctanos
-            </a>
-
-        </div>
-
-    </header>
-
-    <!-- CARRUSEL -->
-
-    <section class="carousel">
-
-        <div class="slide active">
-            <img src="img/banner1.jpg" alt="Banner Principal">
-        </div>
-
-        <div class="slide">
-            <img src="img/banner2.jpg" alt="Banner Secundario">
-        </div>
-
-        <div class="slide">
-            <img src="img/banner3.jpg" alt="Banner Promocional">
-        </div>
-
-        <button class="prev">&#10094;</button>
-        <button class="next">&#10095;</button>
-
-    </section>
-
-    <!-- BIENVENIDA -->
-
-    <section class="welcome">
-
-        <h2>Las mejores zapatillas para cada paso</h2>
-
-        <p>
-            Descubre los últimos modelos para running,
-            entrenamiento, fútbol y uso urbano.
-        </p>
-
-    </section>
-
-    <!-- PRODUCTOS DESTACADOS -->
-
-    <section class="featured-products">
-
-        <h2>Productos Destacados</h2>
-
-        <div class="products-container">
-
-            <article class="product-card">
-                <img src="img/zapatilla1.jpg" alt="Nike Air Max">
-                <h3>Nike Air Max</h3>
-                <p>S/ 399.90</p>
-                <button>Ver Producto</button>
-            </article>
-
-            <article class="product-card">
-                <img src="img/zapatilla2.jpg" alt="Adidas Ultraboost">
-                <h3>Adidas Ultraboost</h3>
-                <p>S/ 499.90</p>
-                <button>Ver Producto</button>
-            </article>
-
-            <article class="product-card">
-                <img src="img/zapatilla3.jpg" alt="Puma Velocity">
-                <h3>Puma Velocity</h3>
-                <p>S/ 349.90</p>
-                <button>Ver Producto</button>
-            </article>
-
-            <article class="product-card">
-                <img src="img/zapatilla4.jpg" alt="New Balance 530">
-                <h3>New Balance 530</h3>
-                <p>S/ 429.90</p>
-                <button>Ver Producto</button>
-            </article>
-
-        </div>
-
-    </section>
-
-    <!-- BENEFICIOS -->
-
-    <section class="benefits">
-
-        <div class="benefit">
-            <i class="fas fa-truck"></i>
-            <h3>Envíos a Todo el Perú</h3>
-            <p>Recibe tus pedidos rápidamente.</p>
-        </div>
-
-        <div class="benefit">
-            <i class="fas fa-credit-card"></i>
-            <h3>Pago Seguro</h3>
-            <p>Múltiples métodos de pago.</p>
-        </div>
-
-        <div class="benefit">
-            <i class="fas fa-headset"></i>
-            <h3>Soporte</h3>
-            <p>Atención personalizada.</p>
-        </div>
-
-        <div class="benefit">
-            <i class="fas fa-shield-alt"></i>
-            <h3>Compra Protegida</h3>
-            <p>Seguridad en todas tus compras.</p>
-        </div>
-
-    </section>
-
-    <!-- FOOTER -->
-
-    <footer class="footer">
-
-        <div class="footer-column">
-            <h3>RUNSHOP</h3>
-            <p>
-                Tienda especializada en zapatillas deportivas
-                para hombres, mujeres y niños.
-            </p>
-        </div>
-
-        <div class="footer-column">
-            <h3>Información</h3>
-            <ul>
-                <li><a href="#">Nosotros</a></li>
-                <li><a href="#">Términos y Condiciones</a></li>
-                <li><a href="#">Política de Privacidad</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-column">
-            <h3>Atención al Cliente</h3>
-            <ul>
-                <li><a href="#">Preguntas Frecuentes</a></li>
-                <li><a href="#">Cambios y Devoluciones</a></li>
-                <li><a href="#">Seguimiento de Pedido</a></li>
-            </ul>
-        </div>
-
-        <div class="footer-column">
-            <h3>Libro de Reclamaciones</h3>
-
-            <p>
-                Conforme a la legislación peruana,
-                ponemos a disposición nuestro libro
-                de reclamaciones virtual.
-            </p>
-
-            <a href="#" class="claims-button">
-                Libro de Reclamaciones
-            </a>
-        </div>
-
-    </footer>
-
-    <div class="copyright">
-        <p>© 2026 RunShop. Todos los derechos reservados.</p>
+  <!-- ═══════════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════════ -->
+  <header class="header">
+    <div class="logo">
+      <h1>GONTER</h1>
     </div>
 
-    <script>
-        const slides = document.querySelectorAll('.slide');
-        const nextBtn = document.querySelector('.next');
-        const prevBtn = document.querySelector('.prev');
+    <nav class="navbar">
+      <ul>
+        <li><a href="hombres.html?categoria=hombre">Hombre</a></li>
+        <li><a href="hombres.html?categoria=mujer">Mujer</a></li>
+        <li><a href="hombres.html?categoria=ninos">Niños</a></li>
+        <li><a href="hombres.html?categoria=oferta">Ofertas</a></li>
+      </ul>
+    </nav>
 
-        let currentSlide = 0;
+    <div class="header-buttons">
+      <button class="cart-btn" title="Carrito" id="cartBtn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
 
-        function showSlide(index) {
-            slides.forEach(slide => {
-                slide.classList.remove('active');
-            });
+      <!-- Botón visible solo para admin -->
+      <a href="dashboard.html" class="dashboard-btn hidden" id="dashboardBtn" title="Control de Ventas">
+        <i class="fas fa-chart-line"></i> <span>Control de Ventas</span>
+      </a>
 
-            slides[index].classList.add('active');
-        }
+      <!-- Botón visible cuando NO hay sesión -->
+      <button class="login-btn" id="openLoginBtn">
+        <i class="fas fa-user"></i> Iniciar Sesión
+      </button>
 
-        nextBtn.addEventListener('click', () => {
-            currentSlide++;
+      <!-- Menú visible cuando SÍ hay sesión -->
+      <div class="user-menu hidden" id="userMenu">
+        <button class="user-btn" id="userMenuBtn">
+          <i class="fas fa-user-circle"></i>
+          <span id="userDisplayName">Usuario</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="#" id="myAccountBtn"><i class="fas fa-id-card"></i> Mi Cuenta</a>
+          <a href="#" id="myOrdersBtn"><i class="fas fa-box"></i> Mis Pedidos</a>
+          <hr />
+          <a href="#" id="logoutBtn" class="logout-link"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+        </div>
+      </div>
 
-            if (currentSlide >= slides.length) {
-                currentSlide = 0;
-            }
+      <a href="https://wa.me/51906279775" class="contact-btn">
+        <i class="fas fa-phone"></i> Contáctanos
+      </a>
+    </div>
+  </header>
 
-            showSlide(currentSlide);
+  <!-- ═══════════════════════════════════════════
+       CARRUSEL
+  ════════════════════════════════════════════ -->
+  <section class="carousel" id="inicio">
+    <div class="slide active">
+      <img src="img/banner1.jpg" alt="Banner Principal" />
+      <div class="slide-overlay">
+        <h2>Nueva Colección 2026</h2>
+        <p>Rendimiento y estilo en cada paso</p>
+        <button class="slide-cta" onclick="window.location.href='hombres.html'">Ver Colección</button>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="img/banner2.jpg" alt="Banner Secundario" />
+      <div class="slide-overlay">
+        <h2>Running Pro</h2>
+        <p>Diseñadas para superar tus límites</p>
+        <button class="slide-cta" onclick="window.location.href='hombres.html'">Explorar</button>
+      </div>
+    </div>
+    <div class="slide">
+      <img src="img/banner3.jpg" alt="Banner Promocional" />
+      <div class="slide-overlay">
+        <h2>Ofertas Exclusivas</h2>
+        <p>Hasta 40% de descuento esta semana</p>
+        <button class="slide-cta" onclick="window.location.href='hombres.html'">Ver Ofertas</button>
+      </div>
+    </div>
+    <button class="prev">&#10094;</button>
+    <button class="next">&#10095;</button>
+    <div class="slide-dots" id="slideDots"></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       BIENVENIDA
+  ════════════════════════════════════════════ -->
+  <section class="welcome">
+    <h2>Las mejores zapatillas para cada paso</h2>
+    <p>Descubre los últimos modelos para running, entrenamiento, fútbol y uso urbano.</p>
+  </section>
+
+  <!-- ═══════════════════════════════════════════
+       PRODUCTOS DESTACADOS (con CRUD)
+  ════════════════════════════════════════════ -->
+  <section class="featured-products" id="productos">
+    <div class="section-header">
+      <h2>Productos Destacados</h2>
+      <!-- Solo visible para admin -->
+      <button class="add-product-btn hidden" id="addProductBtn">
+        <i class="fas fa-plus"></i> Añadir Producto
+      </button>
+    </div>
+
+    <div class="products-container" id="productsContainer">
+      <!-- Los productos se renderizan dinámicamente -->
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-column">
+      <h3>GONTER</h3>
+      <p>Tienda especializada en zapatillas deportivas para hombres, mujeres y niños.</p>
+    </div>
+    <div class="footer-column">
+      <h3>Información</h3>
+      <ul>
+        <li><a href="#" onclick="openInfoModal('nosotros'); return false;">Nosotros</a></li>
+        <li><a href="#" onclick="openInfoModal('terminos'); return false;">Términos y Condiciones</a></li>
+        <li><a href="#" onclick="openInfoModal('privacidad'); return false;">Política de Privacidad</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Contáctanos</h3>
+      <p>¿Tienes alguna duda o consulta? Escríbenos directamente por WhatsApp y te atendemos al instante.</p>
+      <a href="https://wa.me/51906279775" target="_blank" rel="noopener" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+      </a>
+    </div>
+    <div class="footer-column">
+      <h3>Libro de Reclamaciones</h3>
+      <p>Conforme a la legislación peruana, ponemos a disposición nuestro libro de reclamaciones virtual.</p>
+      <a href="#" onclick="openInfoModal('reclamaciones'); return false;" class="claims-button">Libro de
+        Reclamaciones</a>
+    </div>
+  </footer>
+
+  <div class="copyright">
+    <p>© 2026 Gonter. Todos los derechos reservados.</p>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       MODALES: INFORMACIÓN DEL FOOTER
+  ════════════════════════════════════════════ -->
+
+  <!-- NOSOTROS -->
+  <div class="modal-overlay hidden" id="modalNosotros">
+    <div class="modal-box modal-info-box">
+      <button class="modal-close" onclick="closeModal('modalNosotros')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Sobre <span>Nosotros</span></h2>
+      <div class="info-content">
+        <p><strong>Gonter</strong> es una tienda peruana especializada en calzado deportivo de alta calidad. Nacimos con
+          la misión de acercar las mejores marcas del mundo — Nike, Adidas, Puma, New Balance y más — a cada peruano que
+          busca rendimiento, comodidad y estilo en cada paso.</p>
+        <p>Creemos que el calzado correcto marca la diferencia: en la pista, en el gimnasio, en la calle. Por eso
+          seleccionamos cuidadosamente cada modelo que entra a nuestro catálogo, asegurándonos de que cumpla con los más
+          altos estándares de calidad.</p>
+        <h3>Nuestra Misión</h3>
+        <p>Proveer calzado deportivo auténtico y de calidad, con una experiencia de compra simple, rápida y segura para
+          todos nuestros clientes en el Perú.</p>
+        <h3>Nuestra Visión</h3>
+        <p>Convertirnos en la tienda de referencia en calzado deportivo a nivel nacional, reconocida por la confianza,
+          el servicio y la variedad de su catálogo.</p>
+        <h3>¿Por qué elegirnos?</h3>
+        <ul class="info-list">
+          <li><i class="fas fa-check-circle"></i> Productos 100% auténticos</li>
+          <li><i class="fas fa-check-circle"></i> Envíos a todo el Perú</li>
+          <li><i class="fas fa-check-circle"></i> Atención personalizada por WhatsApp</li>
+          <li><i class="fas fa-check-circle"></i> Múltiples métodos de pago</li>
+          <li><i class="fas fa-check-circle"></i> Garantía de satisfacción en cada compra</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TÉRMINOS Y CONDICIONES -->
+  <div class="modal-overlay hidden" id="modalTerminos">
+    <div class="modal-box modal-info-box">
+      <button class="modal-close" onclick="closeModal('modalTerminos')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Términos y <span>Condiciones</span></h2>
+      <div class="info-content">
+        <p class="info-date">Última actualización: junio 2026</p>
+
+        <h3>1. Aceptación de los Términos</h3>
+        <p>Al acceder y utilizar el sitio web de Gonter, usted acepta los presentes términos y condiciones en su
+          totalidad. Si no está de acuerdo con alguno de ellos, le pedimos que no utilice nuestros servicios.</p>
+
+        <h3>2. Uso del Sitio</h3>
+        <p>El sitio web de Gonter está destinado exclusivamente para uso personal y no comercial. Queda prohibido
+          reproducir, distribuir o modificar cualquier contenido de este sitio sin autorización expresa.</p>
+
+        <h3>3. Registro de Cuenta</h3>
+        <p>Para realizar compras, deberá crear una cuenta con información verídica y actualizada. Usted es responsable
+          de mantener la confidencialidad de su contraseña y de todas las actividades realizadas desde su cuenta.</p>
+
+        <h3>4. Precios y Pagos</h3>
+        <p>Todos los precios están expresados en soles peruanos (S/) e incluyen los impuestos aplicables. Gonter se
+          reserva el derecho de modificar los precios sin previo aviso. El cobro se realiza al momento de confirmar la
+          compra.</p>
+
+        <h3>5. Envíos y Entregas</h3>
+        <p>Los envíos se realizan a nivel nacional a través de operadores logísticos autorizados. Los tiempos de entrega
+          varían entre 2 y 7 días hábiles según la ubicación. Gonter no se responsabiliza por demoras ocasionadas por
+          factores externos.</p>
+
+        <h3>6. Devoluciones</h3>
+        <p>Aceptamos devoluciones dentro de los 7 días calendario posteriores a la recepción del producto, siempre que
+          este se encuentre en condiciones originales, sin uso y con su empaque original. Para iniciar una devolución,
+          contáctenos por WhatsApp.</p>
+
+        <h3>7. Limitación de Responsabilidad</h3>
+        <p>Gonter no será responsable por daños indirectos, incidentales o consecuentes derivados del uso o la
+          imposibilidad de uso de nuestros productos o servicios.</p>
+
+        <h3>8. Modificaciones</h3>
+        <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigencia
+          a partir de su publicación en el sitio web.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- POLÍTICA DE PRIVACIDAD -->
+  <div class="modal-overlay hidden" id="modalPrivacidad">
+    <div class="modal-box modal-info-box">
+      <button class="modal-close" onclick="closeModal('modalPrivacidad')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Política de <span>Privacidad</span></h2>
+      <div class="info-content">
+        <p class="info-date">Última actualización: junio 2026</p>
+
+        <h3>1. Información que Recopilamos</h3>
+        <p>Al registrarte o realizar una compra en Gonter, recopilamos la siguiente información: nombre completo, correo
+          electrónico, número de teléfono y datos de pago necesarios para procesar tu pedido.</p>
+
+        <h3>2. Uso de la Información</h3>
+        <p>Utilizamos tu información únicamente para:</p>
+        <ul class="info-list">
+          <li><i class="fas fa-dot-circle"></i> Procesar y gestionar tus pedidos</li>
+          <li><i class="fas fa-dot-circle"></i> Comunicarnos contigo sobre el estado de tu compra</li>
+          <li><i class="fas fa-dot-circle"></i> Mejorar tu experiencia en nuestra plataforma</li>
+          <li><i class="fas fa-dot-circle"></i> Enviarte información sobre promociones (solo si lo autorizas)</li>
+        </ul>
+
+        <h3>3. Protección de Datos</h3>
+        <p>Gonter implementa medidas de seguridad técnicas y organizativas para proteger tu información personal contra
+          accesos no autorizados, alteración, divulgación o destrucción.</p>
+
+        <h3>4. Compartición de Datos</h3>
+        <p>No vendemos, alquilamos ni compartimos tu información personal con terceros, salvo cuando sea necesario para
+          procesar tu pedido (operadores logísticos, procesadores de pago) o cuando la ley así lo exija.</p>
+
+        <h3>5. Cookies</h3>
+        <p>Nuestro sitio utiliza el almacenamiento local del navegador (localStorage) para guardar tu sesión y
+          preferencias. No utilizamos cookies de rastreo publicitario.</p>
+
+        <h3>6. Tus Derechos</h3>
+        <p>Tienes derecho a acceder, rectificar o eliminar tus datos personales en cualquier momento. Para ejercer estos
+          derechos, contáctanos por WhatsApp o desde tu perfil en la plataforma.</p>
+
+        <h3>7. Contacto</h3>
+        <p>Para cualquier consulta sobre esta política, puedes escribirnos a través de nuestro WhatsApp: <strong>+51 906
+            279 775</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIBRO DE RECLAMACIONES -->
+  <div class="modal-overlay hidden" id="modalReclamaciones">
+    <div class="modal-box modal-info-box">
+      <button class="modal-close" onclick="closeModal('modalReclamaciones')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Libro de <span>Reclamaciones</span></h2>
+      <div class="info-content">
+        <p>Conforme al <strong>Código de Protección y Defensa del Consumidor (Ley N° 29571)</strong>, Gonter pone a
+          disposición de sus clientes el Libro de Reclamaciones Virtual.</p>
+
+        <div class="reclamacion-form">
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" id="reclNombre" placeholder="Tu nombre completo" />
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="email" id="reclEmail" placeholder="tucorreo@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Número de pedido <span class="optional">(si aplica)</span></label>
+            <input type="text" id="reclPedido" placeholder="GO-00000000" />
+          </div>
+          <div class="form-group">
+            <label>Tipo</label>
+            <select id="reclTipo">
+              <option value="queja">Queja</option>
+              <option value="reclamo">Reclamo</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Descripción del problema</label>
+            <textarea id="reclDesc" rows="4"
+              placeholder="Describe tu queja o reclamo con el mayor detalle posible..."></textarea>
+          </div>
+          <div class="form-error hidden" id="reclError"></div>
+          <button class="btn-primary full-width" onclick="enviarReclamacion()">
+            <i class="fas fa-paper-plane"></i> Enviar Reclamación
+          </button>
+          <p style="font-size:0.78rem;color:var(--muted);margin-top:0.8rem;text-align:center">
+            Recibirás respuesta en un plazo máximo de 30 días calendario.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       MODAL: LOGIN / REGISTRO
+  ════════════════════════════════════════════ -->
+  <div class="modal-overlay hidden" id="authModal">
+    <div class="modal-box">
+      <button class="modal-close" id="closeAuthModal"><i class="fas fa-times"></i></button>
+
+      <!-- Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLogin" onclick="switchTab('login')">Iniciar Sesión</button>
+        <button class="auth-tab" id="tabRegister" onclick="switchTab('register')">Crear Cuenta</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <div id="loginForm">
+        <h2 class="modal-title">Bienvenido a <span>Gonter</span></h2>
+        <p class="modal-subtitle">Ingresa a tu cuenta para continuar</p>
+
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" id="loginEmail" placeholder="tucorreo@email.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label>Contraseña</label>
+          <div class="input-icon-wrap">
+            <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password" />
+            <button class="toggle-pass" onclick="togglePass('loginPassword')"><i class="fas fa-eye"></i></button>
+          </div>
+        </div>
+        <div class="form-row-space">
+          <label class="checkbox-label">
+            <input type="checkbox" id="rememberMe" /> Recordarme
+          </label>
+          <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <div class="form-error hidden" id="loginError"></div>
+
+        <button class="btn-primary full-width" id="loginSubmitBtn" onclick="handleLogin()">
+          Iniciar Sesión
+        </button>
+
+        <p class="switch-auth">
+          ¿No tienes cuenta?
+          <a href="#" onclick="switchTab('register')">Regístrate gratis</a>
+        </p>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div id="registerForm" class="hidden">
+        <h2 class="modal-title">Crea tu cuenta en <span>Gonter</span></h2>
+        <p class="modal-subtitle">Completa los datos para registrarte</p>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" id="regNombre" placeholder="Tu nombre" autocomplete="given-name" />
+          </div>
+          <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" id="regApellido" placeholder="Tu apellido" autocomplete="family-name" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" id="regEmail" placeholder="tucorreo@email.com" autocomplete="email" />
+        </div>
+        <div class="form-group">
+          <label>Teléfono <span class="optional">(opcional)</span></label>
+          <input type="tel" id="regTelefono" placeholder="+51 000 000 000" autocomplete="tel" />
+        </div>
+        <div class="form-group">
+          <label>Contraseña</label>
+          <div class="input-icon-wrap">
+            <input type="password" id="regPassword" placeholder="Mínimo 6 caracteres" autocomplete="new-password" />
+            <button class="toggle-pass" onclick="togglePass('regPassword')"><i class="fas fa-eye"></i></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Confirmar Contraseña</label>
+          <div class="input-icon-wrap">
+            <input type="password" id="regPasswordConfirm" placeholder="Repite tu contraseña"
+              autocomplete="new-password" />
+            <button class="toggle-pass" onclick="togglePass('regPasswordConfirm')"><i class="fas fa-eye"></i></button>
+          </div>
+        </div>
+
+        <div class="form-error hidden" id="registerError"></div>
+
+        <button class="btn-primary full-width" id="registerSubmitBtn" onclick="handleRegister()">
+          Crear Cuenta
+        </button>
+
+        <p class="switch-auth">
+          ¿Ya tienes cuenta?
+          <a href="#" onclick="switchTab('login')">Inicia sesión</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       MODAL: CARRITO
+  ════════════════════════════════════════════ -->
+  <div class="modal-overlay hidden" id="cartModal">
+    <div class="modal-box cart-modal-box">
+      <button class="modal-close" id="closeCartModal"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Tu Carrito</h2>
+      <div id="cartItems"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <strong id="cartTotal">S/ 0.00</strong>
+        </div>
+        <button class="btn-primary full-width" onclick="handleCheckout()">
+          <i class="fas fa-lock"></i> Proceder al Pago
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       MODAL: MÉTODO DE PAGO (BETA)
+  ════════════════════════════════════════════ -->
+  <div class="modal-overlay hidden" id="paymentModal">
+    <div class="modal-box">
+      <button class="modal-close" id="closePaymentModal"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Método de <span>Pago</span></h2>
+      <p class="modal-subtitle">Selecciona cómo deseas pagar tu pedido</p>
+
+      <div class="payment-options" id="paymentOptions">
+        <button class="payment-option" data-method="tarjeta" onclick="selectPaymentMethod('tarjeta')">
+          <i class="fas fa-credit-card"></i>
+          <span>Tarjeta de crédito / débito</span>
+        </button>
+        <button class="payment-option" data-method="yape" onclick="selectPaymentMethod('yape')">
+          <i class="fas fa-mobile-alt"></i>
+          <span>Yape / Plin</span>
+        </button>
+        <button class="payment-option" data-method="transferencia" onclick="selectPaymentMethod('transferencia')">
+          <i class="fas fa-university"></i>
+          <span>Transferencia bancaria</span>
+        </button>
+        <button class="payment-option" data-method="efectivo" onclick="selectPaymentMethod('efectivo')">
+          <i class="fas fa-money-bill-wave"></i>
+          <span>Pago en efectivo (contra entrega)</span>
+        </button>
+      </div>
+
+      <p class="payment-beta-note">
+        <i class="fas fa-info-circle"></i>
+        Esta es una simulación beta. No se realizará ningún cobro real.
+      </p>
+
+      <div class="cart-total payment-summary">
+        <span>Total a pagar:</span>
+        <strong id="paymentTotal">S/ 0.00</strong>
+      </div>
+
+      <div class="form-error hidden" id="paymentError"></div>
+
+      <button class="btn-primary full-width" id="confirmPaymentBtn" onclick="confirmPayment()">
+        <i class="fas fa-check-circle"></i> Confirmar Pago
+      </button>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       MODAL: COMPRA CONFIRMADA
+  ════════════════════════════════════════════ -->
+  <div class="modal-overlay hidden" id="successModal">
+    <div class="modal-box success-modal-box">
+      <div class="success-icon"><i class="fas fa-check"></i></div>
+      <h2 class="modal-title success-title">¡Compra Confirmada!</h2>
+      <p class="modal-subtitle">Tu pedido <strong id="successOrderId"></strong> ha sido registrado correctamente.</p>
+      <button class="btn-primary full-width" onclick="closeModal('successModal')">Continuar comprando</button>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       MODAL: GESTIÓN DE PRODUCTO (CRUD - Admin)
+  ════════════════════════════════════════════ -->
+  <div class="modal-overlay hidden" id="productModal">
+    <div class="modal-box">
+      <button class="modal-close" id="closeProductModal"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title" id="productModalTitle">Añadir Producto</h2>
+
+      <input type="hidden" id="productId" />
+
+      <div class="form-group">
+        <label>Nombre del producto</label>
+        <input type="text" id="productName" placeholder="Nombre del modelo" />
+      </div>
+      <div class="form-row-2">
+        <div class="form-group">
+          <label>Precio (S/)</label>
+          <input type="number" id="productPrice" placeholder="0.00" step="0.01" min="0" />
+        </div>
+        <div class="form-group">
+          <label>Categoría</label>
+          <select id="productCategory">
+            <option value="">Seleccionar</option>
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+            <option value="ninos">Niños</option>
+            <option value="oferta">Oferta</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Tipo de zapatilla</label>
+        <select id="productType">
+          <option value="">Seleccionar</option>
+          <option value="deportiva">Deportiva</option>
+          <option value="urbana">Urbana</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tallas disponibles</label>
+        <div class="tallas-checkbox-grid" id="tallasCheckboxGrid">
+          <!-- Se generan dinámicamente -->
+        </div>
+      </div>
+      <div class="form-group">
+        <label>URL de imagen</label>
+        <input type="text" id="productImage" placeholder="img/producto.jpg" />
+      </div>
+      <div class="form-group">
+        <label>Descripción <span class="optional">(opcional)</span></label>
+        <textarea id="productDesc" placeholder="Descripción breve del producto" rows="3"></textarea>
+      </div>
+
+      <div class="form-error hidden" id="productError"></div>
+
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeModal('productModal')">Cancelar</button>
+        <button class="btn-primary" id="saveProductBtn" onclick="saveProduct()">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════
+       MODAL: MI CUENTA (CRUD clientes)
+  ════════════════════════════════════════════ -->
+  <div class="modal-overlay hidden" id="accountModal">
+    <div class="modal-box">
+      <button class="modal-close" id="closeAccountModal"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Mi <span>Cuenta</span></h2>
+
+      <div class="account-tabs">
+        <button class="account-tab active" onclick="switchAccountTab('profile')">Perfil</button>
+        <button class="account-tab" onclick="switchAccountTab('password')">Contraseña</button>
+        <button class="account-tab" onclick="switchAccountTab('delete')">Eliminar Cuenta</button>
+      </div>
+
+      <!-- PERFIL -->
+      <div id="profileTab">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" id="accNombre" />
+          </div>
+          <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" id="accApellido" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" id="accEmail" />
+        </div>
+        <div class="form-group">
+          <label>Teléfono</label>
+          <input type="tel" id="accTelefono" />
+        </div>
+        <div class="form-error hidden" id="profileError"></div>
+        <button class="btn-primary full-width" onclick="saveProfile()">Guardar Cambios</button>
+      </div>
+
+      <!-- CONTRASEÑA -->
+      <div id="passwordTab" class="hidden">
+        <div class="form-group">
+          <label>Contraseña actual</label>
+          <input type="password" id="currentPass" placeholder="••••••••" />
+        </div>
+        <div class="form-group">
+          <label>Nueva contraseña</label>
+          <input type="password" id="newPass" placeholder="Mínimo 6 caracteres" />
+        </div>
+        <div class="form-group">
+          <label>Confirmar nueva contraseña</label>
+          <input type="password" id="confirmNewPass" placeholder="••••••••" />
+        </div>
+        <div class="form-error hidden" id="passwordError"></div>
+        <button class="btn-primary full-width" onclick="changePassword()">Actualizar Contraseña</button>
+      </div>
+
+      <!-- ELIMINAR CUENTA -->
+      <div id="deleteTab" class="hidden">
+        <div class="danger-zone">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>Zona de peligro</h3>
+          <p>Esta acción es irreversible. Se eliminarán todos tus datos, historial de pedidos y carrito guardado.</p>
+          <div class="form-group">
+            <label>Escribe tu contraseña para confirmar</label>
+            <input type="password" id="deleteConfirmPass" placeholder="••••••••" />
+          </div>
+          <div class="form-error hidden" id="deleteError"></div>
+          <button class="btn-danger full-width" onclick="deleteAccount()">
+            <i class="fas fa-trash"></i> Eliminar mi cuenta permanentemente
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       MODAL: MIS PEDIDOS
+  ════════════════════════════════════════════ -->
+  <div class="modal-overlay hidden" id="ordersModal">
+    <div class="modal-box" style="max-width: 700px;">
+      <button class="modal-close" onclick="closeModal('ordersModal')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Mis <span>Pedidos</span></h2>
+      
+      <div class="orders-tabs-container">
+        <button class="orders-tab-btn active" onclick="switchOrdersTab('activos')">
+          <i class="fas fa-clock"></i> Pedidos Activos
+        </button>
+        <button class="orders-tab-btn" onclick="switchOrdersTab('cancelados')">
+          <i class="fas fa-times-circle"></i> Pedidos Cancelados
+        </button>
+      </div>
+ 
+      <div id="activeOrdersList"></div>
+      <div id="cancelledOrdersList" class="hidden"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       TOAST DE NOTIFICACIONES
+  ════════════════════════════════════════════ -->
+  <div class="toast-container" id="toastContainer"></div>
+
+
+  <!-- ═══════════════════════════════════════════
+       JAVASCRIPT
+  ════════════════════════════════════════════ -->
+  <script>
+
+    // ══════════════════════════════════════════
+    // ESTADO GLOBAL
+    // ══════════════════════════════════════════
+
+    let currentUser = null;
+    let cart = [];
+    let editingProductId = null;
+    let selectedPaymentMethod = null;
+
+    const ADMIN = { id: 0, nombre: 'Admin', apellido: 'Gonter', email: 'admin@gonter.com', password: 'gonter2026', role: 'admin' };
+    let users = JSON.parse(localStorage.getItem('gonter_users') || '[]');
+
+    const TALLAS_DISPONIBLES = ['4.5', '5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'];
+
+    // Productos con tallas incluidas
+    let products = JSON.parse(localStorage.getItem('gonter_products') || 'null') || [
+      { id: 1, name: 'Nike Air Max', price: 399.90, image: 'img/zapatilla1.jpg', category: 'hombre', type: 'urbana', desc: 'Comodidad extrema para uso diario.', rating: 4.8, tallas: ['4.5', '5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
+      { id: 2, name: 'Adidas Ultraboost', price: 499.90, image: 'img/zapatilla2.jpg', category: 'hombre', type: 'deportiva', desc: 'Máximo retorno de energía.', rating: 4.9, tallas: ['4.5', '5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
+      { id: 3, name: 'Puma Velocity', price: 349.90, image: 'img/zapatilla3.jpg', category: 'mujer', type: 'deportiva', desc: 'Velocidad y ligereza en cada zancada.', rating: 4.5, tallas: ['4.5', '5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
+      { id: 4, name: 'New Balance 530', price: 429.90, image: 'img/zapatilla4.jpg', category: 'mujer', type: 'urbana', desc: 'Clásico retro con tecnología moderna.', rating: 4.7, tallas: ['4.5', '5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
+    ];
+
+    let sales = JSON.parse(localStorage.getItem('gonter_sales') || '[]');
+
+    function saveProducts() {
+      localStorage.setItem('gonter_products', JSON.stringify(products));
+    }
+
+    function saveUsers() {
+      localStorage.setItem('gonter_users', JSON.stringify(users));
+    }
+
+    function saveSales() {
+      localStorage.setItem('gonter_sales', JSON.stringify(sales));
+    }
+
+
+    // ══════════════════════════════════════════
+    // RENDER DE PRODUCTOS
+    // ══════════════════════════════════════════
+
+    function renderProducts() {
+      const container = document.getElementById('productsContainer');
+      const isAdmin = currentUser && currentUser.role === 'admin';
+
+      if (products.length === 0) {
+        container.innerHTML = '<p class="no-products">No hay productos disponibles aún.</p>';
+        return;
+      }
+
+      container.innerHTML = products.map(p => `
+        <article class="product-card" data-id="${p.id}">
+          <div class="product-img-wrap">
+            <img src="${p.image}" alt="${p.name}" onerror="this.src='img/placeholder.jpg'" />
+            ${isAdmin ? `
+              <div class="product-admin-actions">
+                <button class="prod-edit-btn" onclick="openEditProduct(${p.id})" title="Editar">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button class="prod-delete-btn" onclick="deleteProduct(${p.id})" title="Eliminar">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>` : ''}
+          </div>
+          <div class="product-info">
+            <span class="product-category">${p.category}${p.type ? ' · ' + p.type : ''}</span>
+            <h3>${p.name}</h3>
+            <p class="product-price">S/ ${p.price.toFixed(2)}</p>
+            ${p.desc ? `<p class="product-desc">${p.desc}</p>` : ''}
+           <p class="product-tallas">Tallas: ${(p.tallas && p.tallas.length > 0) ? p.tallas.join(', ') : 'Consultar'}</p>
+            <button class="btn-add-cart" onclick="openSizeSelector(${p.id})">
+              <i class="fas fa-shopping-cart"></i> Añadir al Carrito
+            </button>
+          </div>
+        </article>
+      `).join('');
+
+      document.getElementById('addProductBtn').classList.toggle('hidden', !isAdmin);
+      document.getElementById('dashboardBtn').classList.toggle('hidden', !isAdmin);
+    }
+
+
+    // ══════════════════════════════════════════
+    // SELECTOR DE TALLAS AL AÑADIR AL CARRITO
+    // ══════════════════════════════════════════
+
+    function openSizeSelector(productId) {
+      if (!currentUser) {
+        showToast('Debes iniciar sesión para añadir productos al carrito.', 'warning');
+        openModal('authModal');
+        switchTab('login');
+        return;
+      }
+
+      const product = products.find(p => p.id === productId);
+      if (!product || !product.tallas || product.tallas.length === 0) {
+        showToast('Este producto no tiene tallas disponibles.', 'error');
+        return;
+      }
+
+      // Crear modal de selección de talla
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.id = 'sizeSelectorOverlay';
+      overlay.innerHTML = `
+        <div class="modal-box" style="max-width: 500px;">
+          <button class="modal-close" onclick="closeSizeSelector()">
+            <i class="fas fa-times"></i>
+          </button>
+          <h2 class="modal-title">Selecciona tu <span>Talla</span></h2>
+          <p class="modal-subtitle">${product.name} - S/ ${product.price.toFixed(2)}</p>
+          
+          <div class="size-selector-grid">
+            ${product.tallas.map(talla => `
+              <button class="size-selector-btn" onclick="selectSizeAndAdd(${productId}, '${talla}')">
+                ${talla}
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(overlay);
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+
+      // Cerrar al click fuera
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeSizeSelector();
+      });
+    }
+
+    function closeSizeSelector() {
+      const overlay = document.getElementById('sizeSelectorOverlay');
+      if (overlay) {
+        overlay.remove();
+        document.body.style.overflow = '';
+      }
+    }
+
+    function selectSizeAndAdd(productId, talla) {
+      closeSizeSelector();
+
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      const existing = cart.find(c => c.id === productId && c.talla === talla);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({
+          ...product,
+          qty: 1,
+          talla: talla,
+          cartItemId: Date.now() // ID único para el item del carrito
         });
+      }
 
-        prevBtn.addEventListener('click', () => {
-            currentSlide--;
+      updateCartCount();
+      showToast(`${product.name} (Talla ${talla}) añadido al carrito.`, 'success');
+    }
 
-            if (currentSlide < 0) {
-                currentSlide = slides.length - 1;
-            }
 
-            showSlide(currentSlide);
-        });
+    // ══════════════════════════════════════════
+    // CARRITO
+    // ══════════════════════════════════════════
 
-        setInterval(() => {
-            currentSlide++;
+    function removeFromCart(productId, talla) {
+      cart = cart.filter(c => !(c.id === productId && c.talla === talla));
+      updateCartCount();
+      renderCart();
+    }
 
-            if (currentSlide >= slides.length) {
-                currentSlide = 0;
-            }
+    function updateQty(productId, delta, talla) {
+      const item = cart.find(c => c.id === productId && c.talla === talla);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) removeFromCart(productId, talla);
+      else renderCart();
+      updateCartCount();
+    }
 
-            showSlide(currentSlide);
-        }, 5000);
-    </script>
+    function updateCartCount() {
+      const total = cart.reduce((sum, c) => sum + c.qty, 0);
+      document.getElementById('cartCount').textContent = total;
+      document.getElementById('cartCount').classList.toggle('hidden', total === 0);
+    }
+
+    function renderCart() {
+      const el = document.getElementById('cartItems');
+      if (cart.length === 0) {
+        el.innerHTML = '<p class="empty-cart"><i class="fas fa-shopping-cart"></i><br/>Tu carrito está vacío.</p>';
+        document.getElementById('cartTotal').textContent = 'S/ 0.00';
+        return;
+      }
+
+      el.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}" onerror="this.src='img/placeholder.jpg'" />
+          <div class="cart-item-info">
+            <strong>${item.name}</strong>
+            ${item.talla ? `<span style="font-size:0.8rem;color:#ff5722;font-weight:600;">Talla: ${item.talla}</span>` : ''}
+            <span class="cart-item-price">S/ ${item.price.toFixed(2)}</span>
+          </div>
+          <div class="cart-item-qty">
+            <button onclick="updateQty(${item.id}, -1, '${item.talla || ''}')">−</button>
+            <span>${item.qty}</span>
+            <button onclick="updateQty(${item.id}, 1, '${item.talla || ''}')">+</button>
+          </div>
+          <button class="cart-item-remove" onclick="removeFromCart(${item.id}, '${item.talla || ''}')">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      `).join('');
+
+      const total = cart.reduce((sum, c) => sum + c.price * c.qty, 0);
+      document.getElementById('cartTotal').textContent = `S/ ${total.toFixed(2)}`;
+    }
+
+    function getCartTotal() {
+      return cart.reduce((sum, c) => sum + c.price * c.qty, 0);
+    }
+
+
+    // ══════════════════════════════════════════
+    // CHECKOUT
+    // ══════════════════════════════════════════
+
+    function handleCheckout() {
+      if (cart.length === 0) {
+        showToast('Tu carrito está vacío.', 'warning');
+        return;
+      }
+
+      if (!currentUser) {
+        showToast('Inicia sesión para confirmar tu compra.', 'warning');
+        closeModal('cartModal');
+        switchTab('login');
+        openModal('authModal');
+        return;
+      }
+
+      closeModal('cartModal');
+      openPaymentModal();
+    }
+
+    function openPaymentModal() {
+      selectedPaymentMethod = null;
+      document.querySelectorAll('.payment-option').forEach(btn => btn.classList.remove('selected'));
+      clearError('paymentError');
+      document.getElementById('paymentTotal').textContent = `S/ ${getCartTotal().toFixed(2)}`;
+      openModal('paymentModal');
+    }
+
+    function selectPaymentMethod(method) {
+      selectedPaymentMethod = method;
+      document.querySelectorAll('.payment-option').forEach(btn => {
+        btn.classList.toggle('selected', btn.dataset.method === method);
+      });
+      clearError('paymentError');
+    }
+
+    function confirmPayment() {
+      clearError('paymentError');
+
+      if (!selectedPaymentMethod) {
+        showError('paymentError', 'Selecciona un método de pago para continuar.');
+        return;
+      }
+
+      const order = {
+        id: 'GO-' + Date.now().toString().slice(-8),
+        date: new Date().toISOString(),
+        customerId: currentUser.id,
+        customerName: `${currentUser.nombre} ${currentUser.apellido}`,
+        customerEmail: currentUser.email,
+        items: cart.map(c => ({ id: c.id, name: c.name, price: c.price, qty: c.qty, category: c.category, talla: c.talla })),
+        total: getCartTotal(),
+        paymentMethod: selectedPaymentMethod,
+        status: 'confirmado'
+      };
+
+      sales.push(order);
+      saveSales();
+
+      cart = [];
+      updateCartCount();
+
+      closeModal('paymentModal');
+      document.getElementById('successOrderId').textContent = `#${order.id}`;
+      openModal('successModal');
+      showToast('Pago confirmado y registrado en Control de Ventas.', 'success');
+    }
+
+
+    // ══════════════════════════════════════════
+    // AUTH: LOGIN / REGISTRO / LOGOUT
+    // ══════════════════════════════════════════
+
+    function handleLogin() {
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      clearError('loginError');
+
+      if (!email || !password) {
+        showError('loginError', 'Por favor completa todos los campos.');
+        return;
+      }
+
+      const user = [ADMIN, ...users].find(u => u.email === email && u.password === password);
+      if (!user) {
+        showError('loginError', 'Correo o contraseña incorrectos.');
+        return;
+      }
+
+      loginUser(user);
+      closeModal('authModal');
+      showToast(`¡Bienvenido de nuevo, ${user.nombre}!`, 'success');
+    }
+
+    function handleRegister() {
+      const nombre = document.getElementById('regNombre').value.trim();
+      const apellido = document.getElementById('regApellido').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const telefono = document.getElementById('regTelefono').value.trim();
+      const password = document.getElementById('regPassword').value;
+      const confirm = document.getElementById('regPasswordConfirm').value;
+
+      clearError('registerError');
+
+      if (!nombre || !apellido || !email || !password) {
+        showError('registerError', 'Completa todos los campos obligatorios.');
+        return;
+      }
+      if (!/\S+@\S+\.\S+/.test(email)) {
+        showError('registerError', 'Ingresa un correo electrónico válido.');
+        return;
+      }
+      if (password.length < 6) {
+        showError('registerError', 'La contraseña debe tener al menos 6 caracteres.');
+        return;
+      }
+      if (password !== confirm) {
+        showError('registerError', 'Las contraseñas no coinciden.');
+        return;
+      }
+      if (email === ADMIN.email || users.find(u => u.email === email)) {
+        showError('registerError', 'Ya existe una cuenta con ese correo.');
+        return;
+      }
+
+      const newUser = { id: Date.now(), nombre, apellido, email, telefono, password, role: 'cliente' };
+      users.push(newUser);
+      saveUsers();
+
+      loginUser(newUser);
+      closeModal('authModal');
+      showToast(`¡Cuenta creada! Bienvenido, ${nombre}.`, 'success');
+    }
+
+    function loginUser(user) {
+      currentUser = user;
+      localStorage.setItem('gonter_session', JSON.stringify({ id: user.id, nombre: user.nombre, email: user.email, role: user.role }));
+      document.getElementById('userDisplayName').textContent = user.nombre;
+      document.getElementById('openLoginBtn').classList.add('hidden');
+      document.getElementById('userMenu').classList.remove('hidden');
+      renderProducts();
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      currentUser = null;
+      cart = [];
+      localStorage.removeItem('gonter_session');
+      updateCartCount();
+      document.getElementById('openLoginBtn').classList.remove('hidden');
+      document.getElementById('userMenu').classList.add('hidden');
+      document.getElementById('userDropdown').classList.remove('open');
+      renderProducts();
+      showToast('Sesión cerrada correctamente.', 'info');
+    });
+
+
+    // ══════════════════════════════════════════
+    // CRUD PRODUCTOS (CON TALLAS)
+    // ══════════════════════════════════════════
+
+    function renderTallasCheckboxes(selectedTallas = []) {
+      const container = document.getElementById('tallasCheckboxGrid');
+      container.innerHTML = TALLAS_DISPONIBLES.map(talla => `
+        <label class="talla-checkbox-label">
+          <input type="checkbox" value="${talla}" ${selectedTallas.includes(talla) ? 'checked' : ''} />
+          <span>${talla}</span>
+        </label>
+      `).join('');
+    }
+
+    document.getElementById('addProductBtn').addEventListener('click', () => {
+      openAddProduct();
+    });
+
+    function openAddProduct() {
+      editingProductId = null;
+      document.getElementById('productModalTitle').textContent = 'Añadir Producto';
+      document.getElementById('productId').value = '';
+      document.getElementById('productName').value = '';
+      document.getElementById('productPrice').value = '';
+      document.getElementById('productCategory').value = '';
+      document.getElementById('productType').value = '';
+      document.getElementById('productImage').value = '';
+      document.getElementById('productDesc').value = '';
+      renderTallasCheckboxes([]);
+      clearError('productError');
+      openModal('productModal');
+    }
+
+    function openEditProduct(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      editingProductId = id;
+      document.getElementById('productModalTitle').textContent = 'Editar Producto';
+      document.getElementById('productId').value = p.id;
+      document.getElementById('productName').value = p.name;
+      document.getElementById('productPrice').value = p.price;
+      document.getElementById('productCategory').value = p.category;
+      document.getElementById('productType').value = p.type || '';
+      document.getElementById('productImage').value = p.image;
+      document.getElementById('productDesc').value = p.desc || '';
+      renderTallasCheckboxes(p.tallas || []);
+      clearError('productError');
+      openModal('productModal');
+    }
+
+    function saveProduct() {
+      const name = document.getElementById('productName').value.trim();
+      const price = parseFloat(document.getElementById('productPrice').value);
+      const category = document.getElementById('productCategory').value;
+      const type = document.getElementById('productType').value;
+      const image = document.getElementById('productImage').value.trim();
+      const desc = document.getElementById('productDesc').value.trim();
+
+      // Obtener tallas seleccionadas
+      const tallasSeleccionadas = Array.from(document.querySelectorAll('#tallasCheckboxGrid input[type="checkbox"]:checked'))
+        .map(cb => cb.value);
+
+      clearError('productError');
+
+      if (!name || isNaN(price) || !category || !image) {
+        showError('productError', 'Completa todos los campos obligatorios.');
+        return;
+      }
+
+      if (tallasSeleccionadas.length === 0) {
+        showError('productError', 'Selecciona al menos una talla.');
+        return;
+      }
+
+      if (editingProductId) {
+        const idx = products.findIndex(p => p.id === editingProductId);
+        products[idx] = { ...products[idx], name, price, category, type, image, desc, tallas: tallasSeleccionadas };
+        showToast('Producto actualizado.', 'success');
+      } else {
+        products.push({ id: Date.now(), name, price, category, type, image, desc, tallas: tallasSeleccionadas });
+        showToast('Producto añadido.', 'success');
+      }
+
+      saveProducts();
+      renderProducts();
+      closeModal('productModal');
+    }
+
+    function deleteProduct(id) {
+      if (!confirm('¿Seguro que deseas eliminar este producto?')) return;
+      products = products.filter(p => p.id !== id);
+      saveProducts();
+      renderProducts();
+      showToast('Producto eliminado.', 'info');
+    }
+
+
+    // ══════════════════════════════════════════
+    // MIS PEDIDOS
+    // ══════════════════════════════════════════
+
+    document.getElementById('myOrdersBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!currentUser) {
+        showToast('Inicia sesión para ver tus pedidos.', 'warning');
+        return;
+      }
+      document.getElementById('userDropdown').classList.remove('open');
+      switchOrdersTab('activos');
+      openModal('ordersModal');
+    });
+
+function switchOrdersTab(tab) {
+  document.querySelectorAll('.orders-tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', (tab === 'activos' && i === 0) || (tab === 'cancelados' && i === 1));
+  });
+  
+  const userOrders = sales.filter(o => o.customerId === currentUser?.id);
+  const activeOrders = userOrders.filter(o => o.status !== 'cancelado');
+  const cancelledOrders = userOrders.filter(o => o.status === 'cancelado');
+
+  document.getElementById('activeOrdersList').classList.toggle('hidden', tab !== 'activos');
+  document.getElementById('cancelledOrdersList').classList.toggle('hidden', tab !== 'cancelados');
+
+  if (tab === 'activos') {
+    document.getElementById('activeOrdersList').innerHTML = activeOrders.length ? activeOrders.reverse().map(o => `
+      <div class="order-card">
+        <div class="order-header">
+          <span class="order-id">#${o.id}</span>
+          <span class="order-status ${o.status}">${o.status}</span>
+        </div>
+        <p class="order-date">${new Date(o.date).toLocaleDateString()}</p>
+        ${o.items.map(i => `<p class="order-item">${i.name} ${i.talla ? '(Talla: ' + i.talla + ')' : ''} x${i.qty}</p>`).join('')}
+        <p class="order-total">S/ ${o.total.toFixed(2)}</p>
+        <button class="btn-cancel-order" onclick="cancelOrder('${o.id}')">
+          <i class="fas fa-times"></i> Cancelar Pedido
+        </button>
+      </div>
+    `).join('') : '<div class="empty-state"><i class="fas fa-box-open"></i><h3>Sin pedidos activos</h3></div>';
+  } else {
+    document.getElementById('cancelledOrdersList').innerHTML = cancelledOrders.length ? cancelledOrders.reverse().map(o => `
+      <div class="order-card cancelled">
+        <div class="order-header">
+          <span class="order-id">#${o.id}</span>
+          <span class="order-status cancelado">Cancelado</span>
+        </div>
+        <p class="order-date">${new Date(o.date).toLocaleDateString()}</p>
+        <p class="order-total">S/ ${o.total.toFixed(2)}</p>
+      </div>
+    `).join('') : '<div class="empty-state"><i class="fas fa-check-circle"></i><h3>Sin pedidos cancelados</h3></div>';
+  }
+}
+
+function cancelOrder(orderId) {
+  if (!confirm('¿Cancelar este pedido?')) return;
+  const order = sales.find(o => o.id === orderId);
+  if (order) { 
+    order.status = 'cancelado'; 
+    saveSales(); 
+    switchOrdersTab('activos'); 
+    showToast('Pedido cancelado', 'success'); 
+  }
+}
+
+
+    // ══════════════════════════════════════════
+    // CRUD MI CUENTA
+    // ══════════════════════════════════════════
+
+    document.getElementById('myAccountBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      if (!currentUser) return;
+      document.getElementById('accNombre').value = currentUser.nombre;
+      document.getElementById('accApellido').value = currentUser.apellido;
+      document.getElementById('accEmail').value = currentUser.email;
+      document.getElementById('accTelefono').value = currentUser.telefono || '';
+      switchAccountTab('profile');
+      openModal('accountModal');
+      document.getElementById('userDropdown').classList.remove('open');
+    });
+
+    function saveProfile() {
+      const nombre = document.getElementById('accNombre').value.trim();
+      const apellido = document.getElementById('accApellido').value.trim();
+      const email = document.getElementById('accEmail').value.trim();
+      const telefono = document.getElementById('accTelefono').value.trim();
+
+      clearError('profileError');
+
+      if (!nombre || !apellido || !email) {
+        showError('profileError', 'Nombre, apellido y correo son obligatorios.');
+        return;
+      }
+
+      if (currentUser.role === 'admin') {
+        showError('profileError', 'La cuenta de administrador no puede editarse desde aquí.');
+        return;
+      }
+
+      const emailConflict = users.find(u => u.email === email && u.id !== currentUser.id);
+      if (emailConflict || email === ADMIN.email) {
+        showError('profileError', 'Ese correo ya está en uso por otra cuenta.');
+        return;
+      }
+
+      const idx = users.findIndex(u => u.id === currentUser.id);
+      users[idx] = { ...users[idx], nombre, apellido, email, telefono };
+      currentUser = users[idx];
+      saveUsers();
+
+      document.getElementById('userDisplayName').textContent = nombre;
+      showToast('Perfil actualizado correctamente.', 'success');
+      closeModal('accountModal');
+    }
+
+    function changePassword() {
+      const current = document.getElementById('currentPass').value;
+      const newP = document.getElementById('newPass').value;
+      const confirm = document.getElementById('confirmNewPass').value;
+
+      clearError('passwordError');
+
+      if (currentUser.role === 'admin') {
+        showError('passwordError', 'La contraseña del administrador no puede cambiarse desde aquí.');
+        return;
+      }
+
+      if (!current || !newP || !confirm) {
+        showError('passwordError', 'Completa todos los campos.');
+        return;
+      }
+      if (current !== currentUser.password) {
+        showError('passwordError', 'La contraseña actual es incorrecta.');
+        return;
+      }
+      if (newP.length < 6) {
+        showError('passwordError', 'La nueva contraseña debe tener al menos 6 caracteres.');
+        return;
+      }
+      if (newP !== confirm) {
+        showError('passwordError', 'Las contraseñas nuevas no coinciden.');
+        return;
+      }
+
+      const idx = users.findIndex(u => u.id === currentUser.id);
+      users[idx].password = newP;
+      currentUser.password = newP;
+      saveUsers();
+
+      document.getElementById('currentPass').value = '';
+      document.getElementById('newPass').value = '';
+      document.getElementById('confirmNewPass').value = '';
+      showToast('Contraseña actualizada.', 'success');
+    }
+
+    function deleteAccount() {
+      const pass = document.getElementById('deleteConfirmPass').value;
+      clearError('deleteError');
+
+      if (currentUser.role === 'admin') {
+        showError('deleteError', 'La cuenta de administrador no puede eliminarse.');
+        return;
+      }
+
+      if (!pass) {
+        showError('deleteError', 'Ingresa tu contraseña para confirmar.');
+        return;
+      }
+      if (pass !== currentUser.password) {
+        showError('deleteError', 'Contraseña incorrecta.');
+        return;
+      }
+
+      users = users.filter(u => u.id !== currentUser.id);
+      saveUsers();
+      closeModal('accountModal');
+
+      currentUser = null;
+      cart = [];
+      updateCartCount();
+      document.getElementById('openLoginBtn').classList.remove('hidden');
+      document.getElementById('userMenu').classList.add('hidden');
+      renderProducts();
+      showToast('Tu cuenta ha sido eliminada.', 'info');
+    }
+
+
+    // ══════════════════════════════════════════
+    // HELPERS UI
+    // ══════════════════════════════════════════
+
+    function openModal(id) {
+      document.getElementById(id).classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    function switchTab(tab) {
+      document.getElementById('loginForm').classList.toggle('hidden', tab !== 'login');
+      document.getElementById('registerForm').classList.toggle('hidden', tab !== 'register');
+      document.getElementById('tabLogin').classList.toggle('active', tab === 'login');
+      document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+    }
+
+    function switchAccountTab(tab) {
+      ['profile', 'password', 'delete'].forEach(t => {
+        document.getElementById(t + 'Tab').classList.toggle('hidden', t !== tab);
+      });
+      document.querySelectorAll('.account-tab').forEach((btn, i) => {
+        btn.classList.toggle('active', ['profile', 'password', 'delete'][i] === tab);
+      });
+    }
+
+    function togglePass(id) {
+      const input = document.getElementById(id);
+      const icon = input.nextElementSibling.querySelector('i');
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fas fa-eye-slash';
+      } else {
+        input.type = 'password';
+        icon.className = 'fas fa-eye';
+      }
+    }
+
+    function showError(id, msg) {
+      const el = document.getElementById(id);
+      el.textContent = msg;
+      el.classList.remove('hidden');
+    }
+
+    function clearError(id) {
+      const el = document.getElementById(id);
+      el.textContent = '';
+      el.classList.add('hidden');
+    }
+
+    function showToast(msg, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      const icons = { success: 'fa-check-circle', warning: 'fa-exclamation-circle', info: 'fa-info-circle', error: 'fa-times-circle' };
+      toast.innerHTML = `<i class="fas ${icons[type] || icons.info}"></i> ${msg}`;
+      container.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 10);
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 400);
+      }, 3500);
+    }
+
+    function scrollToProducts() {
+      document.getElementById('productos').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Cerrar modales al click fuera
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) closeModal(overlay.id);
+      });
+    });
+
+    // Botones de cerrar modal
+    document.getElementById('closeAuthModal').addEventListener('click', () => closeModal('authModal'));
+    document.getElementById('closeCartModal').addEventListener('click', () => closeModal('cartModal'));
+    document.getElementById('closePaymentModal').addEventListener('click', () => closeModal('paymentModal'));
+    document.getElementById('closeProductModal').addEventListener('click', () => closeModal('productModal'));
+    document.getElementById('closeAccountModal').addEventListener('click', () => closeModal('accountModal'));
+
+    // Abrir modal de login
+    document.getElementById('openLoginBtn').addEventListener('click', () => {
+      switchTab('login');
+      openModal('authModal');
+    });
+
+    // Abrir carrito
+    document.getElementById('cartBtn').addEventListener('click', () => {
+      if (!currentUser) {
+        showToast('Inicia sesión para ver tu carrito.', 'warning');
+        switchTab('login');
+        openModal('authModal');
+        return;
+      }
+      renderCart();
+      openModal('cartModal');
+    });
+
+    // Toggle dropdown usuario
+    document.getElementById('userMenuBtn').addEventListener('click', () => {
+      document.getElementById('userDropdown').classList.toggle('open');
+    });
+    document.addEventListener('click', (e) => {
+      if (!document.getElementById('userMenu').contains(e.target)) {
+        document.getElementById('userDropdown').classList.remove('open');
+      }
+    });
+
+
+    // ══════════════════════════════════════════
+    // CARRUSEL
+    // ══════════════════════════════════════════
+
+    const slides = document.querySelectorAll('.slide');
+    const nextBtn = document.querySelector('.next');
+    const prevBtn = document.querySelector('.prev');
+    const dotsContainer = document.getElementById('slideDots');
+    let currentSlide = 0;
+    let autoSlide;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(index) {
+      slides[currentSlide].classList.remove('active');
+      document.querySelectorAll('.dot')[currentSlide].classList.remove('active');
+      currentSlide = (index + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      document.querySelectorAll('.dot')[currentSlide].classList.add('active');
+    }
+
+    function startAutoSlide() {
+      autoSlide = setInterval(() => goToSlide(currentSlide + 1), 5000);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlide);
+      startAutoSlide();
+    }
+
+    nextBtn.addEventListener('click', () => { goToSlide(currentSlide + 1); resetAutoSlide(); });
+    prevBtn.addEventListener('click', () => { goToSlide(currentSlide - 1); resetAutoSlide(); });
+    startAutoSlide();
+
+
+    // ══════════════════════════════════════════
+    // MODALES DE INFORMACIÓN (FOOTER)
+    // ══════════════════════════════════════════
+
+    const infoModalMap = {
+      nosotros: 'modalNosotros',
+      terminos: 'modalTerminos',
+      privacidad: 'modalPrivacidad',
+      reclamaciones: 'modalReclamaciones',
+    };
+
+    function openInfoModal(key) {
+      const id = infoModalMap[key];
+      if (id) openModal(id);
+    }
+
+    ['modalNosotros', 'modalTerminos', 'modalPrivacidad', 'modalReclamaciones'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('click', e => { if (e.target === el) closeModal(id); });
+    });
+
+    function enviarReclamacion() {
+      const nombre = document.getElementById('reclNombre').value.trim();
+      const email = document.getElementById('reclEmail').value.trim();
+      const desc = document.getElementById('reclDesc').value.trim();
+
+      clearError('reclError');
+
+      if (!nombre || !email || !desc) {
+        showError('reclError', 'Completa los campos obligatorios: nombre, correo y descripción.');
+        return;
+      }
+      if (!/\S+@\S+\.\S+/.test(email)) {
+        showError('reclError', 'Ingresa un correo electrónico válido.');
+        return;
+      }
+
+      const reclamaciones = JSON.parse(localStorage.getItem('gonter_reclamaciones') || '[]');
+      reclamaciones.push({
+        id: 'REC-' + Date.now().toString().slice(-6),
+        date: new Date().toISOString(),
+        nombre,
+        email,
+        pedido: document.getElementById('reclPedido').value.trim(),
+        tipo: document.getElementById('reclTipo').value,
+        desc,
+      });
+      localStorage.setItem('gonter_reclamaciones', JSON.stringify(reclamaciones));
+
+      document.getElementById('reclNombre').value = '';
+      document.getElementById('reclEmail').value = '';
+      document.getElementById('reclPedido').value = '';
+      document.getElementById('reclDesc').value = '';
+      closeModal('modalReclamaciones');
+      showToast('Reclamación enviada. Te responderemos en hasta 30 días.', 'success');
+    }
+
+
+    // ══════════════════════════════════════════
+    // INIT
+    // ══════════════════════════════════════════
+
+    (function restoreSession() {
+      const saved = JSON.parse(localStorage.getItem('gonter_session') || 'null');
+      if (!saved) return;
+
+      let user = null;
+      if (saved.role === 'admin' && saved.email === ADMIN.email) {
+        user = ADMIN;
+      } else {
+        user = users.find(u => u.id === saved.id && u.email === saved.email);
+      }
+
+      if (user) {
+        currentUser = user;
+        document.getElementById('userDisplayName').textContent = user.nombre;
+        document.getElementById('openLoginBtn').classList.add('hidden');
+        document.getElementById('userMenu').classList.remove('hidden');
+      } else {
+        localStorage.removeItem('gonter_session');
+      }
+    })();
+
+    renderProducts();
+    updateCartCount();
+
+  </script>
 
 </body>
 

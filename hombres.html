@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gonter | Catálogo de Zapatillas</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+<body>
+
+  <!-- ═══════════════════════════════════════════
+       HEADER (SIN LUPA, IGUAL QUE INDEX ACTUAL)
+  ════════════════════════════════════════════ -->
+  <header class="header">
+    <div class="logo">
+      <h1>GONTER</h1>
+    </div>
+
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="hombres.html" style="color: var(--white); background: var(--bg-surface);">Catálogo</a></li>
+        <li><a href="index.html#mujer">Mujer</a></li>
+        <li><a href="index.html#ninos">Niños</a></li>
+        <li><a href="index.html#ofertas">Ofertas</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-buttons">
+      <button class="cart-btn" title="Carrito" id="cartBtn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+
+      <a href="dashboard.html" class="dashboard-btn hidden" id="dashboardBtn" title="Control de Ventas">
+        <i class="fas fa-chart-line"></i> <span>Control de Ventas</span>
+      </a>
+
+      <button class="login-btn" id="openLoginBtn">
+        <i class="fas fa-user"></i> Iniciar Sesión
+      </button>
+
+      <div class="user-menu hidden" id="userMenu">
+        <button class="user-btn" id="userMenuBtn">
+          <i class="fas fa-user-circle"></i>
+          <span id="userDisplayName">Usuario</span>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="#" id="myAccountBtn"><i class="fas fa-id-card"></i> Mi Cuenta</a>
+          <a href="#" id="myOrdersBtn"><i class="fas fa-box"></i> Mis Pedidos</a>
+          <hr />
+          <a href="#" id="logoutBtn" class="logout-link"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+        </div>
+      </div>
+
+      <a href="https://wa.me/51906279775" class="contact-btn">
+        <i class="fas fa-phone"></i> Contáctanos
+      </a>
+    </div>
+  </header>
+
+  <!-- ═══════════════════════════════════════════
+       CATÁLOGO CON FILTROS
+  ════════════════════════════════════════════ -->
+  <main class="catalog-layout">
+
+    <!-- SIDEBAR FILTROS -->
+    <aside class="filters-sidebar">
+      <h2>Filtros</h2>
+      <p class="filter-subtitle">Encuentra tu par ideal</p>
+
+      <!-- Buscador -->
+      <div class="filter-section">
+        <h3>Buscar</h3>
+        <div class="search-wrap">
+          <input type="text" id="searchInput" placeholder="Buscar modelo..." oninput="applyFilters()" />
+        </div>
+      </div>
+
+      <!-- Categoría -->
+      <div class="filter-section">
+        <h3>Categoría</h3>
+        <div class="category-options">
+          <button class="category-option active" data-category="todas" onclick="setCategoryFilter('todas', this)">
+            <i class="fas fa-th-large"></i> Todas
+          </button>
+          <button class="category-option" data-category="hombre" onclick="setCategoryFilter('hombre', this)">
+            <i class="fas fa-male"></i> Hombre
+          </button>
+          <button class="category-option" data-category="mujer" onclick="setCategoryFilter('mujer', this)">
+            <i class="fas fa-female"></i> Mujer
+          </button>
+          <button class="category-option" data-category="ninos" onclick="setCategoryFilter('ninos', this)">
+            <i class="fas fa-child"></i> Niños
+          </button>
+          <button class="category-option" data-category="oferta" onclick="setCategoryFilter('oferta', this)">
+            <i class="fas fa-tag"></i> Ofertas
+          </button>
+        </div>
+      </div>
+
+      <!-- Tallas -->
+      <div class="filter-section">
+        <h3>Talla</h3>
+        <div class="sizes-grid" id="sizesGrid"></div>
+      </div>
+
+      <!-- Tipo -->
+      <div class="filter-section">
+        <h3>Tipo</h3>
+        <div class="type-options">
+          <button class="type-option active" data-type="todas" onclick="setTypeFilter('todas', this)">
+            <i class="fas fa-th-large"></i> Todas
+          </button>
+          <button class="type-option" data-type="urbana" onclick="setTypeFilter('urbana', this)">
+            <i class="fas fa-city"></i> Urbanas
+          </button>
+          <button class="type-option" data-type="deportiva" onclick="setTypeFilter('deportiva', this)">
+            <i class="fas fa-running"></i> Deportivas
+          </button>
+        </div>
+      </div>
+
+      <!-- Ordenamiento -->
+      <div class="filter-section" id="sortSection">
+        <h3>Ordenar por</h3>
+        <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+          <option value="relevancia">Relevancia</option>
+          <option value="mejor-valorado">Mejor valorado</option>
+          <option value="precio-asc">Precio: Menor a Mayor</option>
+          <option value="precio-desc">Precio: Mayor a Menor</option>
+        </select>
+      </div>
+
+      <button class="clear-filters-btn" onclick="clearAllFilters()">
+        <i class="fas fa-times-circle"></i> Limpiar filtros
+      </button>
+    </aside>
+
+    <!-- PRODUCTOS -->
+    <section class="products-area">
+      <div class="products-area-header">
+        <h2 id="catalogTitle">Catálogo Completo</h2>
+        <div style="display: flex; gap: 1rem; align-items: center;">
+          <span class="results-count" id="resultsCount">0 productos</span>
+          <button class="add-product-btn-catalog hidden" id="addProductBtnCatalog">
+            <i class="fas fa-plus"></i> Añadir Producto
+          </button>
+        </div>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER COMPLETO (IGUAL QUE INDEX)
+  ════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-column">
+      <h3>GONTER</h3>
+      <p>Tienda especializada en zapatillas deportivas para hombres, mujeres y niños.</p>
+    </div>
+    <div class="footer-column">
+      <h3>Información</h3>
+      <ul>
+        <li><a href="#" onclick="openInfoModal('nosotros'); return false;">Nosotros</a></li>
+        <li><a href="#" onclick="openInfoModal('terminos'); return false;">Términos y Condiciones</a></li>
+        <li><a href="#" onclick="openInfoModal('privacidad'); return false;">Política de Privacidad</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Contáctanos</h3>
+      <p>¿Tienes alguna duda o consulta? Escríbenos directamente por WhatsApp y te atendemos al instante.</p>
+      <a href="https://wa.me/51906279775" target="_blank" rel="noopener" class="whatsapp-btn">
+        <i class="fab fa-whatsapp"></i> Escribir por WhatsApp
+      </a>
+    </div>
+    <div class="footer-column">
+      <h3>Libro de Reclamaciones</h3>
+      <p>Conforme a la legislación peruana, ponemos a disposición nuestro libro de reclamaciones virtual.</p>
+      <a href="#" onclick="openInfoModal('reclamaciones'); return false;" class="claims-button">Libro de
+        Reclamaciones</a>
+    </div>
+  </footer>
+
+  <div class="copyright">
+    <p>© 2026 Gonter. Todos los derechos reservados.</p>
+  </div>
+
+  <!-- ═══════════════════════════════════════════
+       MODALES (REPLICADOS DEL INDEX)
+  ════════════════════════════════════════════ -->
+
+  <!-- NOSOTROS -->
+  <div class="modal-overlay hidden" id="modalNosotros">
+    <div class="modal-box modal-info-box">
+      <button class="modal-close" onclick="closeModal('modalNosotros')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Sobre <span>Nosotros</span></h2>
+      <div class="info-content">
+        <p><strong>Gonter</strong> es una tienda peruana especializada en calzado deportivo de alta calidad.</p>
+        <h3>Nuestra Misión</h3>
+        <p>Proveer calzado deportivo auténtico y de calidad.</p>
+        <h3>Nuestra Visión</h3>
+        <p>Convertirnos en la tienda de referencia en calzado deportivo a nivel nacional.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TÉRMINOS -->
+  <div class="modal-overlay hidden" id="modalTerminos">
+    <div class="modal-box modal-info-box">
+      <button class="modal-close" onclick="closeModal('modalTerminos')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Términos y <span>Condiciones</span></h2>
+      <div class="info-content">
+        <p class="info-date">Última actualización: junio 2026</p>
+        <h3>1. Aceptación</h3>
+        <p>Al usar este sitio aceptas los términos.</p>
+        <h3>2. Devoluciones</h3>
+        <p>Aceptamos devoluciones dentro de 7 días calendario.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRIVACIDAD -->
+  <div class="modal-overlay hidden" id="modalPrivacidad">
+    <div class="modal-box modal-info-box">
+      <button class="modal-close" onclick="closeModal('modalPrivacidad')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Política de <span>Privacidad</span></h2>
+      <div class="info-content">
+        <p>Protegemos tus datos personales.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECLAMACIONES -->
+  <div class="modal-overlay hidden" id="modalReclamaciones">
+    <div class="modal-box modal-info-box">
+      <button class="modal-close" onclick="closeModal('modalReclamaciones')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Libro de <span>Reclamaciones</span></h2>
+      <div class="info-content">
+        <div class="reclamacion-form">
+          <div class="form-group">
+            <label>Nombre completo</label>
+            <input type="text" id="reclNombre" placeholder="Tu nombre completo" />
+          </div>
+          <div class="form-group">
+            <label>Correo electrónico</label>
+            <input type="email" id="reclEmail" placeholder="tucorreo@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Descripción</label>
+            <textarea id="reclDesc" rows="4" placeholder="Describe tu reclamo..."></textarea>
+          </div>
+          <button class="btn-primary full-width" onclick="enviarReclamacion()">
+            <i class="fas fa-paper-plane"></i> Enviar Reclamación
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MI CUENTA -->
+  <div class="modal-overlay hidden" id="accountModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('accountModal')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Mi <span>Cuenta</span></h2>
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" id="accNombre" />
+      </div>
+      <div class="form-group">
+        <label>Apellido</label>
+        <input type="text" id="accApellido" />
+      </div>
+      <div class="form-group">
+        <label>Correo</label>
+        <input type="email" id="accEmail" />
+      </div>
+      <div class="form-group">
+        <label>Teléfono</label>
+        <input type="tel" id="accTelefono" />
+      </div>
+      <button class="btn-primary full-width" onclick="saveProfile()">Guardar Cambios</button>
+    </div>
+  </div>
+
+  <!-- MIS PEDIDOS -->
+  <div class="modal-overlay hidden" id="ordersModal">
+    <div class="modal-box" style="max-width: 700px;">
+      <button class="modal-close" onclick="closeModal('ordersModal')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Mis <span>Pedidos</span></h2>
+      <div class="orders-tabs-container">
+        <button class="orders-tab-btn active" onclick="switchOrdersTab('activos')">Pedidos Activos</button>
+        <button class="orders-tab-btn" onclick="switchOrdersTab('cancelados')">Pedidos Cancelados</button>
+      </div>
+      <div id="activeOrdersList"></div>
+      <div id="cancelledOrdersList" class="hidden"></div>
+    </div>
+  </div>
+
+  <!-- CARRITO -->
+  <div class="modal-overlay hidden" id="cartModal">
+    <div class="modal-box cart-modal-box">
+      <button class="modal-close" onclick="closeModal('cartModal')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Tu Carrito</h2>
+      <div id="cartItems"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Total:</span>
+          <strong id="cartTotal">S/ 0.00</strong>
+        </div>
+        <button class="btn-primary full-width" onclick="checkout()">
+          <i class="fas fa-lock"></i> Proceder al Pago
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTO CRUD -->
+  <div class="modal-overlay hidden" id="productModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('productModal')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title" id="productModalTitle">Añadir Producto</h2>
+      <input type="hidden" id="productId" />
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" id="productName" />
+      </div>
+      <div class="form-row-2">
+        <div class="form-group">
+          <label>Precio (S/)</label>
+          <input type="number" id="productPrice" step="0.01" />
+        </div>
+        <div class="form-group">
+          <label>Categoría</label>
+          <select id="productCategory">
+            <option value="">Seleccionar</option>
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+            <option value="ninos">Niños</option>
+            <option value="oferta">Oferta</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Tipo</label>
+        <select id="productType">
+          <option value="">Seleccionar</option>
+          <option value="deportiva">Deportiva</option>
+          <option value="urbana">Urbana</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tallas</label>
+        <div class="tallas-checkbox-grid" id="tallasCheckboxGrid"></div>
+      </div>
+      <div class="form-group">
+        <label>URL Imagen</label>
+        <input type="text" id="productImage" />
+      </div>
+      <div class="form-group">
+        <label>Descripción</label>
+        <textarea id="productDesc" rows="3"></textarea>
+      </div>
+      <div class="form-error hidden" id="productError"></div>
+      <div class="modal-actions">
+        <button class="btn-secondary" onclick="closeModal('productModal')">Cancelar</button>
+        <button class="btn-primary" onclick="saveProduct()">Guardar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script>
+    // ══════════════════════════════════════════
+    // ESTADO GLOBAL
+    // ══════════════════════════════════════════
+    const ADMIN = { id: 0, nombre: 'Admin', apellido: 'Gonter', email: 'admin@gonter.com', password: 'gonter2026', role: 'admin' };
+    const TALLAS = ['4.5', '5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'];
+
+    let currentUser = null;
+    let cart = JSON.parse(localStorage.getItem('gonter_cart') || '[]');
+    let users = JSON.parse(localStorage.getItem('gonter_users') || '[]');
+    let sales = JSON.parse(localStorage.getItem('gonter_sales') || '[]');
+    let editingProductId = null;
+
+    // Productos predeterminados (16 en total)
+    let products = JSON.parse(localStorage.getItem('gonter_products') || 'null') || [
+      { id: 1, name: 'Nike Air Max 90', price: 429.90, image: 'img/zapatilla1.jpg', category: 'hombre', type: 'urbana', desc: 'Ícono urbano con amortiguación Air.', rating: 4.8, tallas: ['7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
+      { id: 2, name: 'Adidas Ultraboost 23', price: 549.90, image: 'img/zapatilla2.jpg', category: 'hombre', type: 'deportiva', desc: 'Máximo retorno de energía para running.', rating: 4.9, tallas: ['6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
+      { id: 3, name: 'Puma RS-X', price: 379.90, image: 'img/zapatilla3.jpg', category: 'hombre', type: 'urbana', desc: 'Diseño retro con tecnología RS.', rating: 4.5, tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11'] },
+      { id: 4, name: 'New Balance 574', price: 399.90, image: 'img/zapatilla4.jpg', category: 'hombre', type: 'urbana', desc: 'Clásico atemporal para el día a día.', rating: 4.6, tallas: ['4.5', '5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5'] },
+      { id: 5, name: 'Nike Revolution 6', price: 299.90, image: 'img/zapatilla5.jpg', category: 'hombre', type: 'deportiva', desc: 'Ligeras y transpirables para entrenamiento.', rating: 4.7, tallas: ['7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
+      { id: 6, name: 'Adidas Forum Low', price: 469.90, image: 'img/zapatilla6.jpg', category: 'hombre', type: 'urbana', desc: 'Estilo basketball clásico.', rating: 4.4, tallas: ['6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11'] },
+      { id: 7, name: 'Nike Air Force 1', price: 389.90, image: 'img/zapatilla1.jpg', category: 'mujer', type: 'urbana', desc: 'El clásico indiscutible en versión femenina.', rating: 4.8, tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9'] },
+      { id: 8, name: 'Adidas Superstar', price: 349.90, image: 'img/zapatilla2.jpg', category: 'mujer', type: 'urbana', desc: 'Diseño icónico con puntera de concha.', rating: 4.7, tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5'] },
+      { id: 9, name: 'Puma Cali Dream', price: 329.90, image: 'img/zapatilla3.jpg', category: 'mujer', type: 'urbana', desc: 'Estilo californiano con suela plataforma.', rating: 4.5, tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9'] },
+      { id: 10, name: 'New Balance 327', price: 459.90, image: 'img/zapatilla4.jpg', category: 'mujer', type: 'deportiva', desc: 'Retro running con toque moderno.', rating: 4.9, tallas: ['5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5'] },
+      { id: 11, name: 'Nike Court Borough', price: 259.90, image: 'img/zapatilla5.jpg', category: 'ninos', type: 'urbana', desc: 'Resistente y cómoda para el día a día.', rating: 4.6, tallas: ['4.5', '5', '6', '6.5', '7'] },
+      { id: 12, name: 'Adidas Advantage', price: 239.90, image: 'img/zapatilla6.jpg', category: 'ninos', type: 'deportiva', desc: 'Perfecta para educación física.', rating: 4.4, tallas: ['4.5', '5', '6', '6.5', '7', '7.5'] },
+      { id: 13, name: 'Puma Rebound', price: 279.90, image: 'img/zapatilla1.jpg', category: 'ninos', type: 'urbana', desc: 'Estilo urbano juvenil con tecnología cómoda.', rating: 4.3, tallas: ['5', '6', '6.5', '7', '7.5', '8'] },
+      { id: 14, name: 'New Balance 680v6', price: 219.90, image: 'img/zapatilla2.jpg', category: 'ninos', type: 'deportiva', desc: 'Amortiguación Fresh Foam para los más activos.', rating: 4.5, tallas: ['4.5', '5', '6', '6.5', '7'] },
+      { id: 15, name: 'Nike Downshifter 12', price: 199.90, image: 'img/zapatilla3.jpg', category: 'oferta', type: 'deportiva', desc: 'Running accesible con soporte total. 40% OFF', rating: 4.2, tallas: ['7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'] },
+      { id: 16, name: 'Adidas Runfalcon 3', price: 179.90, image: 'img/zapatilla4.jpg', category: 'oferta', type: 'deportiva', desc: 'Ligereza a precio increíble. 35% OFF', rating: 4.1, tallas: ['6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11'] },
+    ];
+
+    // Filtros activos
+    let activeCategory = 'todas';
+    let activeSize = null;
+    let activeType = 'todas';
+
+    function saveProducts() { localStorage.setItem('gonter_products', JSON.stringify(products)); }
+    function saveUsers() { localStorage.setItem('gonter_users', JSON.stringify(users)); }
+    function saveSales() { localStorage.setItem('gonter_sales', JSON.stringify(sales)); }
+
+    // ══════════════════════════════════════════
+    // FILTROS Y RENDER
+    // ══════════════════════════════════════════
+    function renderSizeButtons() {
+      document.getElementById('sizesGrid').innerHTML = TALLAS.map(t => `
+        <button class="size-btn" data-size="${t}" onclick="setSizeFilter('${t}', this)">${t}</button>
+      `).join('');
+    }
+
+    function setCategoryFilter(cat, btn) {
+      activeCategory = cat;
+      document.querySelectorAll('.category-option').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('catalogTitle').textContent = cat === 'todas' ? 'Catálogo Completo' : cat.charAt(0).toUpperCase() + cat.slice(1);
+      applyFilters();
+    }
+
+    function setSizeFilter(talla, btn) {
+      if (activeSize === talla) {
+        activeSize = null;
+        btn.classList.remove('active');
+      } else {
+        document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeSize = talla;
+      }
+      applyFilters();
+    }
+
+    function setTypeFilter(type, btn) {
+      activeType = type;
+      document.querySelectorAll('.type-option').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      applyFilters();
+    }
+
+    function clearAllFilters() {
+      activeCategory = 'todas';
+      activeSize = null;
+      activeType = 'todas';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('sortSelect').value = 'relevancia';
+      document.querySelectorAll('.category-option').forEach(b => b.classList.remove('active'));
+      document.querySelector('.category-option[data-category="todas"]').classList.add('active');
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.type-option').forEach(b => b.classList.remove('active'));
+      document.querySelector('.type-option[data-type="todas"]').classList.add('active');
+      document.getElementById('catalogTitle').textContent = 'Catálogo Completo';
+      applyFilters();
+    }
+
+    function applyFilters() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+      let filtered = [...products];
+
+      // Categoría
+      if (activeCategory !== 'todas') {
+        filtered = filtered.filter(p => p.category === activeCategory);
+      }
+
+      // Tipo
+      if (activeType !== 'todas') {
+        filtered = filtered.filter(p => p.type === activeType);
+      }
+
+      // Talla
+      if (activeSize) {
+        filtered = filtered.filter(p => p.tallas && p.tallas.includes(activeSize));
+      }
+
+      // Búsqueda
+      if (searchTerm) {
+        filtered = filtered.filter(p => p.name.toLowerCase().includes(searchTerm));
+      }
+
+      // Ordenamiento
+      const sort = document.getElementById('sortSelect').value;
+      switch (sort) {
+        case 'precio-asc': filtered.sort((a, b) => a.price - b.price); break;
+        case 'precio-desc': filtered.sort((a, b) => b.price - a.price); break;
+        case 'mejor-valorado': filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0)); break;
+        default: filtered.sort((a, b) => a.id - b.id);
+      }
+
+      renderProducts(filtered);
+    }
+
+    function renderProducts(filteredProducts) {
+      const grid = document.getElementById('productsGrid');
+      const countEl = document.getElementById('resultsCount');
+      const isAdmin = currentUser && currentUser.role === 'admin';
+
+      countEl.textContent = `${filteredProducts.length} producto(s)`;
+      document.getElementById('addProductBtnCatalog').classList.toggle('hidden', !isAdmin);
+
+      if (filteredProducts.length === 0) {
+        grid.innerHTML = `
+          <div class="no-results">
+            <i class="fas fa-search"></i>
+            <h3>Sin resultados</h3>
+            <p>Prueba con otros filtros</p>
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = filteredProducts.map(p => `
+        <article class="product-card">
+          <div class="product-img-wrap">
+            <img src="${p.image}" alt="${p.name}" onerror="this.src='img/placeholder.jpg'" />
+            <span class="product-badge ${p.type}">${p.type === 'urbana' ? 'Urbana' : 'Deportiva'}</span>
+            ${isAdmin ? `
+              <div class="product-admin-actions">
+                <button class="prod-edit-btn" onclick="editProduct(${p.id})"><i class="fas fa-edit"></i></button>
+                <button class="prod-delete-btn" onclick="deleteProduct(${p.id})"><i class="fas fa-trash"></i></button>
+              </div>` : ''}
+          </div>
+          <div class="product-info">
+            <span class="product-category">${p.category} · ${p.type}</span>
+            <h3>${p.name}</h3>
+            <p class="product-price">S/ ${p.price.toFixed(2)}</p>
+            ${p.desc ? `<p class="product-desc">${p.desc}</p>` : ''}
+            <p class="product-tallas">Tallas: ${p.tallas.join(', ')}</p>
+            <button class="btn-add-cart" onclick="openSizeSelector(${p.id})">
+              <i class="fas fa-shopping-cart"></i> Añadir al Carrito
+            </button>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    // ══════════════════════════════════════════
+    // SELECTOR DE TALLAS
+    // ══════════════════════════════════════════
+    function openSizeSelector(productId) {
+      if (!currentUser) { showToast('Inicia sesión primero', 'warning'); return; }
+      const product = products.find(p => p.id === productId);
+      if (!product || !product.tallas.length) return;
+
+      const overlay = document.createElement('div');
+      overlay.className = 'modal-overlay';
+      overlay.id = 'sizeSelectorOverlay';
+      overlay.innerHTML = `
+        <div class="modal-box" style="max-width: 500px;">
+          <button class="modal-close" onclick="closeSizeSelector()"><i class="fas fa-times"></i></button>
+          <h2 class="modal-title">Selecciona tu <span>Talla</span></h2>
+          <p class="modal-subtitle">${product.name} - S/ ${product.price.toFixed(2)}</p>
+          <div class="size-selector-grid">
+            ${product.tallas.map(t => `<button class="size-selector-btn" onclick="addToCartWithSize(${productId}, '${t}')">${t}</button>`).join('')}
+          </div>
+        </div>`;
+      document.body.appendChild(overlay);
+      overlay.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      overlay.addEventListener('click', e => { if (e.target === overlay) closeSizeSelector(); });
+    }
+
+    function closeSizeSelector() {
+      const el = document.getElementById('sizeSelectorOverlay');
+      if (el) { el.remove(); document.body.style.overflow = ''; }
+    }
+
+    function addToCartWithSize(productId, talla) {
+      closeSizeSelector();
+      const product = products.find(p => p.id === productId);
+      const existing = cart.find(c => c.id === productId && c.talla === talla);
+      if (existing) { existing.qty++; }
+      else { cart.push({ ...product, qty: 1, talla, cartItemId: Date.now() }); }
+      localStorage.setItem('gonter_cart', JSON.stringify(cart));
+      updateCartCount();
+      showToast(`${product.name} (Talla ${talla}) añadido`, 'success');
+    }
+
+    // ══════════════════════════════════════════
+    // CARRITO
+    // ══════════════════════════════════════════
+    function updateCartCount() {
+      const total = cart.reduce((s, c) => s + c.qty, 0);
+      document.getElementById('cartCount').textContent = total;
+      document.getElementById('cartCount').classList.toggle('hidden', total === 0);
+    }
+
+    function renderCart() {
+      const el = document.getElementById('cartItems');
+      if (!cart.length) {
+        el.innerHTML = '<p class="empty-cart"><i class="fas fa-shopping-cart"></i><br/>Carrito vacío</p>';
+        document.getElementById('cartTotal').textContent = 'S/ 0.00';
+        return;
+      }
+      el.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" onerror="this.src='img/placeholder.jpg'" />
+          <div class="cart-item-info">
+            <strong>${item.name}</strong>
+            <span class="cart-talla">Talla: ${item.talla}</span>
+            <span class="cart-item-price">S/ ${item.price.toFixed(2)}</span>
+          </div>
+          <div class="cart-item-qty">
+            <button onclick="updateQty(${item.id}, -1, '${item.talla}')">−</button>
+            <span>${item.qty}</span>
+            <button onclick="updateQty(${item.id}, 1, '${item.talla}')">+</button>
+          </div>
+          <button class="cart-item-remove" onclick="removeFromCart(${item.id}, '${item.talla}')"><i class="fas fa-times"></i></button>
+        </div>
+      `).join('');
+      document.getElementById('cartTotal').textContent = `S/ ${cart.reduce((s, c) => s + c.price * c.qty, 0).toFixed(2)}`;
+    }
+
+    function removeFromCart(id, talla) {
+      cart = cart.filter(c => !(c.id === id && c.talla === talla));
+      localStorage.setItem('gonter_cart', JSON.stringify(cart));
+      updateCartCount();
+      renderCart();
+    }
+
+    function updateQty(id, delta, talla) {
+      const item = cart.find(c => c.id === id && c.talla === talla);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) removeFromCart(id, talla);
+      else { localStorage.setItem('gonter_cart', JSON.stringify(cart)); renderCart(); }
+      updateCartCount();
+    }
+
+    function checkout() {
+      if (!cart.length) { showToast('Carrito vacío', 'warning'); return; }
+      const order = {
+        id: 'GO-' + Date.now().toString().slice(-8),
+        date: new Date().toISOString(),
+        customerId: currentUser?.id || 0,
+        customerName: currentUser ? `${currentUser.nombre} ${currentUser.apellido}` : 'Invitado',
+        items: cart.map(c => ({ id: c.id, name: c.name, price: c.price, qty: c.qty, talla: c.talla })),
+        total: cart.reduce((s, c) => s + c.price * c.qty, 0),
+        status: 'confirmado'
+      };
+      sales.push(order);
+      saveSales();
+      cart = [];
+      localStorage.setItem('gonter_cart', JSON.stringify(cart));
+      updateCartCount();
+      closeModal('cartModal');
+      showToast('¡Pedido confirmado! #' + order.id, 'success');
+    }
+
+    // ══════════════════════════════════════════
+    // CRUD PRODUCTOS
+    // ══════════════════════════════════════════
+    function renderTallasCheckboxes(selected = []) {
+      document.getElementById('tallasCheckboxGrid').innerHTML = TALLAS.map(t => `
+        <label class="talla-checkbox-label">
+          <input type="checkbox" value="${t}" ${selected.includes(t) ? 'checked' : ''} /> ${t}
+        </label>
+      `).join('');
+    }
+
+    document.getElementById('addProductBtnCatalog').addEventListener('click', () => {
+      editingProductId = null;
+      document.getElementById('productModalTitle').textContent = 'Añadir Producto';
+      document.getElementById('productId').value = '';
+      document.getElementById('productName').value = '';
+      document.getElementById('productPrice').value = '';
+      document.getElementById('productCategory').value = '';
+      document.getElementById('productType').value = '';
+      document.getElementById('productImage').value = '';
+      document.getElementById('productDesc').value = '';
+      renderTallasCheckboxes();
+      openModal('productModal');
+    });
+
+    function editProduct(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      editingProductId = id;
+      document.getElementById('productModalTitle').textContent = 'Editar Producto';
+      document.getElementById('productId').value = p.id;
+      document.getElementById('productName').value = p.name;
+      document.getElementById('productPrice').value = p.price;
+      document.getElementById('productCategory').value = p.category;
+      document.getElementById('productType').value = p.type || '';
+      document.getElementById('productImage').value = p.image;
+      document.getElementById('productDesc').value = p.desc || '';
+      renderTallasCheckboxes(p.tallas || []);
+      openModal('productModal');
+    }
+
+    function saveProduct() {
+      const name = document.getElementById('productName').value.trim();
+      const price = parseFloat(document.getElementById('productPrice').value);
+      const category = document.getElementById('productCategory').value;
+      const type = document.getElementById('productType').value;
+      const image = document.getElementById('productImage').value.trim();
+      const desc = document.getElementById('productDesc').value.trim();
+      const tallas = Array.from(document.querySelectorAll('#tallasCheckboxGrid input:checked')).map(cb => cb.value);
+
+      if (!name || isNaN(price) || !category || !image || !tallas.length) {
+        return showToast('Completa todos los campos', 'warning');
+      }
+
+      if (editingProductId) {
+        const idx = products.findIndex(p => p.id === editingProductId);
+        products[idx] = { ...products[idx], name, price, category, type, image, desc, tallas };
+      } else {
+        products.push({ id: Date.now(), name, price, category, type, image, desc, tallas, rating: 4.0 });
+      }
+      saveProducts();
+      closeModal('productModal');
+      applyFilters();
+      showToast('Producto guardado', 'success');
+    }
+
+    function deleteProduct(id) {
+      if (!confirm('¿Eliminar este producto?')) return;
+      products = products.filter(p => p.id !== id);
+      saveProducts();
+      applyFilters();
+      showToast('Producto eliminado', 'info');
+    }
+
+    // ══════════════════════════════════════════
+    // SESIÓN
+    // ══════════════════════════════════════════
+    function restoreSession() {
+      const saved = JSON.parse(localStorage.getItem('gonter_session') || 'null');
+      if (!saved) return;
+      let user = saved.role === 'admin' && saved.email === ADMIN.email ? ADMIN : users.find(u => u.id === saved.id);
+      if (user) {
+        currentUser = user;
+        document.getElementById('userDisplayName').textContent = user.nombre;
+        document.getElementById('openLoginBtn').classList.add('hidden');
+        document.getElementById('userMenu').classList.remove('hidden');
+        document.getElementById('dashboardBtn').classList.toggle('hidden', user.role !== 'admin');
+        document.getElementById('sortSection').style.display = 'block';
+      }
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', e => {
+      e.preventDefault();
+      currentUser = null;
+      cart = [];
+      localStorage.removeItem('gonter_session');
+      localStorage.removeItem('gonter_cart');
+      updateCartCount();
+      document.getElementById('openLoginBtn').classList.remove('hidden');
+      document.getElementById('userMenu').classList.add('hidden');
+      document.getElementById('dashboardBtn').classList.add('hidden');
+      document.getElementById('userDropdown').classList.remove('open');
+      document.getElementById('sortSection').style.display = 'none';
+      applyFilters();
+      showToast('Sesión cerrada', 'info');
+    });
+
+    document.getElementById('userMenuBtn').addEventListener('click', () => {
+      document.getElementById('userDropdown').classList.toggle('open');
+    });
+    document.addEventListener('click', e => {
+      if (!document.getElementById('userMenu')?.contains(e.target)) {
+        document.getElementById('userDropdown')?.classList.remove('open');
+      }
+    });
+
+    document.getElementById('openLoginBtn').addEventListener('click', () => window.location.href = 'index.html');
+    document.getElementById('cartBtn').addEventListener('click', () => {
+      if (!currentUser) { showToast('Inicia sesión', 'warning'); return; }
+      renderCart();
+      openModal('cartModal');
+    });
+
+    // Mi cuenta
+    document.getElementById('myAccountBtn').addEventListener('click', e => {
+      e.preventDefault();
+      if (!currentUser) return;
+      document.getElementById('accNombre').value = currentUser.nombre || '';
+      document.getElementById('accApellido').value = currentUser.apellido || '';
+      document.getElementById('accEmail').value = currentUser.email || '';
+      document.getElementById('accTelefono').value = currentUser.telefono || '';
+      openModal('accountModal');
+      document.getElementById('userDropdown').classList.remove('open');
+    });
+
+    function saveProfile() {
+      if (currentUser.role === 'admin') { showToast('Admin no editable', 'warning'); return; }
+      const idx = users.findIndex(u => u.id === currentUser.id);
+      users[idx] = { ...users[idx], nombre: document.getElementById('accNombre').value, apellido: document.getElementById('accApellido').value, email: document.getElementById('accEmail').value, telefono: document.getElementById('accTelefono').value };
+      currentUser = users[idx];
+      saveUsers();
+      document.getElementById('userDisplayName').textContent = currentUser.nombre;
+      closeModal('accountModal');
+      showToast('Perfil actualizado', 'success');
+    }
+
+    // Mis pedidos
+    document.getElementById('myOrdersBtn').addEventListener('click', e => {
+      e.preventDefault();
+      if (!currentUser) return;
+      document.getElementById('userDropdown').classList.remove('open');
+      switchOrdersTab('activos');
+      openModal('ordersModal');
+    });
+
+    function switchOrdersTab(tab) {
+      document.querySelectorAll('.orders-tab-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', (tab === 'activos' && i === 0) || (tab === 'cancelados' && i === 1));
+      });
+      const userOrders = sales.filter(o => o.customerId === currentUser.id);
+      const activeOrders = userOrders.filter(o => o.status !== 'cancelado');
+      const cancelledOrders = userOrders.filter(o => o.status === 'cancelado');
+
+      document.getElementById('activeOrdersList').classList.toggle('hidden', tab !== 'activos');
+      document.getElementById('cancelledOrdersList').classList.toggle('hidden', tab !== 'cancelados');
+
+      if (tab === 'activos') {
+        document.getElementById('activeOrdersList').innerHTML = activeOrders.length ? activeOrders.reverse().map(o => `
+          <div class="order-card">
+            <div class="order-header"><span class="order-id">#${o.id}</span><span class="order-status ${o.status}">${o.status}</span></div>
+            <p class="order-date">${new Date(o.date).toLocaleDateString()}</p>
+            ${o.items.map(i => `<p class="order-item"><span>${i.name} ${i.talla ? '(Talla: ' + i.talla + ')' : ''} x${i.qty}</span></p>`).join('')}
+            <p class="order-total">S/ ${o.total.toFixed(2)}</p>
+            <button class="btn-cancel-order" onclick="cancelOrder('${o.id}')"><i class="fas fa-times"></i> Cancelar</button>
+          </div>
+        `).join('') : '<div class="empty-state"><i class="fas fa-box-open"></i><h3>Sin pedidos activos</h3></div>';
+      } else {
+        document.getElementById('cancelledOrdersList').innerHTML = cancelledOrders.length ? cancelledOrders.reverse().map(o => `
+          <div class="order-card cancelled">
+            <div class="order-header"><span class="order-id">#${o.id}</span><span class="order-status cancelado">Cancelado</span></div>
+            <p class="order-date">${new Date(o.date).toLocaleDateString()}</p>
+            <p class="order-total">S/ ${o.total.toFixed(2)}</p>
+          </div>
+        `).join('') : '<div class="empty-state success"><i class="fas fa-check-circle"></i><h3>Sin pedidos cancelados</h3></div>';
+      }
+    }
+
+    function cancelOrder(orderId) {
+      if (!confirm('¿Cancelar este pedido?')) return;
+      const order = sales.find(o => o.id === orderId);
+      if (order) { order.status = 'cancelado'; saveSales(); switchOrdersTab('activos'); showToast('Pedido cancelado', 'success'); }
+    }
+
+    // ══════════════════════════════════════════
+    // HELPERS
+    // ══════════════════════════════════════════
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); document.body.style.overflow = ''; }
+    function showToast(msg, type = 'info') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast toast-${type}`;
+      toast.innerHTML = `<i class="fas fa-${type === 'success' ? 'check' : type === 'warning' ? 'exclamation' : 'info'}-circle"></i> ${msg}`;
+      container.appendChild(toast);
+      setTimeout(() => toast.classList.add('show'), 10);
+      setTimeout(() => { toast.classList.remove('show'); setTimeout(() => toast.remove(), 400); }, 3500);
+    }
+
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(overlay.id); });
+    });
+
+    // Info modales footer
+    function openInfoModal(key) {
+      const map = { nosotros: 'modalNosotros', terminos: 'modalTerminos', privacidad: 'modalPrivacidad', reclamaciones: 'modalReclamaciones' };
+      if (map[key]) openModal(map[key]);
+    }
+
+    function enviarReclamacion() {
+      const nombre = document.getElementById('reclNombre').value.trim();
+      const email = document.getElementById('reclEmail').value.trim();
+      const desc = document.getElementById('reclDesc').value.trim();
+      if (!nombre || !email || !desc) return showToast('Completa los campos', 'warning');
+      closeModal('modalReclamaciones');
+      showToast('Reclamación enviada', 'success');
+    }
+    function aplicarCategoriaDesdeURL() {
+      const params = new URLSearchParams(window.location.search);
+      const categoria = params.get('categoria');
+
+      if (categoria && ['hombre', 'mujer', 'ninos', 'oferta'].includes(categoria)) {
+        activeCategory = categoria;
+
+        // Activar visualmente el botón correspondiente
+        document.querySelectorAll('.category-option').forEach(btn => {
+          btn.classList.remove('active');
+          if (btn.dataset.category === categoria) {
+            btn.classList.add('active');
+          }
+        });
+
+        // Cambiar el título
+        document.getElementById('catalogTitle').textContent =
+          categoria === 'todas' ? 'Catálogo Completo' :
+            categoria.charAt(0).toUpperCase() + categoria.slice(1);
+
+        // Aplicar filtros inmediatamente
+        applyFilters();
+      }
+    }
+
+    // ══════════════════════════════════════════
+    // INIT
+    // ══════════════════════════════════════════
+    renderSizeButtons();
+    restoreSession();
+    aplicarCategoriaDesdeURL();
+    applyFilters();
+    updateCartCount();
+  </script>
+
+</body>
+
+</html>
