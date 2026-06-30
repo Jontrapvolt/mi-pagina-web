@@ -11,9 +11,7 @@
 
 <body>
 
-  <!-- ═══════════════════════════════════════════
-       HEADER (SIN LUPA, IGUAL QUE INDEX ACTUAL)
-  ════════════════════════════════════════════ -->
+  <!-- HEADER (SIN LUPA, IGUAL QUE INDEX ACTUAL) -->
   <header class="header">
     <div class="logo">
       <h1>GONTER</h1>
@@ -63,9 +61,7 @@
     </div>
   </header>
 
-  <!-- ═══════════════════════════════════════════
-       CATÁLOGO CON FILTROS
-  ════════════════════════════════════════════ -->
+  <!-- CATÁLOGO CON FILTROS -->
   <main class="catalog-layout">
 
     <!-- SIDEBAR FILTROS -->
@@ -157,9 +153,7 @@
 
   </main>
 
-  <!-- ═══════════════════════════════════════════
-       FOOTER COMPLETO (IGUAL QUE INDEX)
-  ════════════════════════════════════════════ -->
+  <!-- FOOTER COMPLETO (IGUAL QUE INDEX) -->
   <footer class="footer">
     <div class="footer-column">
       <h3>GONTER</h3>
@@ -320,6 +314,60 @@
     </div>
   </div>
 
+  <!-- MÉTODO DE PAGO (AGREGADO) -->
+  <div class="modal-overlay hidden" id="paymentModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal('paymentModal')"><i class="fas fa-times"></i></button>
+      <h2 class="modal-title">Método de <span>Pago</span></h2>
+      <p class="modal-subtitle">Selecciona cómo deseas pagar tu pedido</p>
+
+      <div class="payment-options" id="paymentOptions">
+        <button class="payment-option" data-method="tarjeta" onclick="selectPaymentMethod('tarjeta')">
+          <i class="fas fa-credit-card"></i>
+          <span>Tarjeta de crédito / débito</span>
+        </button>
+        <button class="payment-option" data-method="yape" onclick="selectPaymentMethod('yape')">
+          <i class="fas fa-mobile-alt"></i>
+          <span>Yape / Plin</span>
+        </button>
+        <button class="payment-option" data-method="transferencia" onclick="selectPaymentMethod('transferencia')">
+          <i class="fas fa-university"></i>
+          <span>Transferencia bancaria</span>
+        </button>
+        <button class="payment-option" data-method="efectivo" onclick="selectPaymentMethod('efectivo')">
+          <i class="fas fa-money-bill-wave"></i>
+          <span>Pago en efectivo (contra entrega)</span>
+        </button>
+      </div>
+
+      <p class="payment-beta-note">
+        <i class="fas fa-info-circle"></i>
+        Esta es una simulación beta. No se realizará ningún cobro real.
+      </p>
+
+      <div class="cart-total payment-summary">
+        <span>Total a pagar:</span>
+        <strong id="paymentTotal">S/ 0.00</strong>
+      </div>
+
+      <div class="form-error hidden" id="paymentError"></div>
+
+      <button class="btn-primary full-width" id="confirmPaymentBtn" onclick="confirmPayment()">
+        <i class="fas fa-check-circle"></i> Confirmar Pago
+      </button>
+    </div>
+  </div>
+
+  <!-- COMPRA CONFIRMADA (AGREGADO) -->
+  <div class="modal-overlay hidden" id="successModal">
+    <div class="modal-box success-modal-box">
+      <div class="success-icon"><i class="fas fa-check"></i></div>
+      <h2 class="modal-title success-title">¡Compra Confirmada!</h2>
+      <p class="modal-subtitle">Tu pedido <strong id="successOrderId"></strong> ha sido registrado correctamente.</p>
+      <button class="btn-primary full-width" onclick="closeModal('successModal')">Continuar comprando</button>
+    </div>
+  </div>
+
   <!-- PRODUCTO CRUD -->
   <div class="modal-overlay hidden" id="productModal">
     <div class="modal-box">
@@ -389,6 +437,7 @@
     let users = JSON.parse(localStorage.getItem('gonter_users') || '[]');
     let sales = JSON.parse(localStorage.getItem('gonter_sales') || '[]');
     let editingProductId = null;
+    let selectedPaymentMethod = null;  // NUEVO
 
     // Productos predeterminados (16 en total, bien definidos)
     let products = JSON.parse(localStorage.getItem('gonter_products') || 'null') || [
@@ -540,7 +589,7 @@
             <h3>${p.name}</h3>
             <p class="product-price">S/ ${p.price.toFixed(2)}</p>
             ${p.desc ? `<p class="product-desc">${p.desc}</p>` : ''}
-            <p class="product-tallas">Tallas: ${p.tallas.join(', ')}</p>
+            <p class="product-tallas">Tallas: ${(p.tallas && p.tallas.length) ? p.tallas.join(', ') : 'Consultar'}</p>
             <button class="btn-add-cart" onclick="openSizeSelector(${p.id})">
               <i class="fas fa-shopping-cart"></i> Añadir al Carrito
             </button>
@@ -642,15 +691,37 @@
       updateCartCount();
     }
 
+    // ══════════════════════════════════════════
+    // CHECKOUT (MODIFICADO)
+    // ══════════════════════════════════════════
     function checkout() {
       if (!cart.length) { showToast('Carrito vacío', 'warning'); return; }
+      if (!currentUser) { showToast('Inicia sesión para comprar', 'warning'); return; }
+      document.getElementById('paymentTotal').textContent = `S/ ${cart.reduce((s, c) => s + c.price * c.qty, 0).toFixed(2)}`;
+      selectedPaymentMethod = null;
+      document.querySelectorAll('.payment-option').forEach(b => b.classList.remove('selected'));
+      closeModal('cartModal');
+      openModal('paymentModal');
+    }
+
+    function selectPaymentMethod(method) {
+      selectedPaymentMethod = method;
+      document.querySelectorAll('.payment-option').forEach(b => {
+        b.classList.toggle('selected', b.dataset.method === method);
+      });
+    }
+
+    function confirmPayment() {
+      if (!selectedPaymentMethod) { showToast('Elige un método de pago', 'warning'); return; }
       const order = {
         id: 'GO-' + Date.now().toString().slice(-8),
         date: new Date().toISOString(),
-        customerId: currentUser?.id || 0,
-        customerName: currentUser ? `${currentUser.nombre} ${currentUser.apellido}` : 'Invitado',
+        customerId: currentUser.id,
+        customerName: `${currentUser.nombre} ${currentUser.apellido}`,
+        customerEmail: currentUser.email,
         items: cart.map(c => ({ id: c.id, name: c.name, price: c.price, qty: c.qty, talla: c.talla })),
         total: cart.reduce((s, c) => s + c.price * c.qty, 0),
+        paymentMethod: selectedPaymentMethod,
         status: 'confirmado'
       };
       sales.push(order);
@@ -658,7 +729,9 @@
       cart = [];
       localStorage.setItem('gonter_cart', JSON.stringify(cart));
       updateCartCount();
-      closeModal('cartModal');
+      closeModal('paymentModal');
+      document.getElementById('successOrderId').textContent = `#${order.id}`;
+      openModal('successModal');
       showToast('¡Pedido confirmado! #' + order.id, 'success');
     }
 
@@ -713,7 +786,7 @@
       const tallas = Array.from(document.querySelectorAll('#tallasCheckboxGrid input:checked')).map(cb => cb.value);
 
       if (!name || isNaN(price) || !category || !image || !tallas.length) {
-        return showToast('Completa todos los campos', 'warning');
+        return showToast('Completa todos los campos (incluye al menos una talla)', 'warning');
       }
 
       if (editingProductId) {
@@ -799,8 +872,22 @@
 
     function saveProfile() {
       if (currentUser.role === 'admin') { showToast('Admin no editable', 'warning'); return; }
+      const nombre = document.getElementById('accNombre').value.trim();
+      const apellido = document.getElementById('accApellido').value.trim();
+      const email = document.getElementById('accEmail').value.trim();
+      const telefono = document.getElementById('accTelefono').value.trim();
+
+      // Validación de email duplicado (AGREGADA)
+      if (email !== currentUser.email) {
+        const emailConflict = users.find(u => u.email === email && u.id !== currentUser.id);
+        if (emailConflict || email === ADMIN.email) {
+          showToast('Ese correo ya está en uso.', 'warning');
+          return;
+        }
+      }
+
       const idx = users.findIndex(u => u.id === currentUser.id);
-      users[idx] = { ...users[idx], nombre: document.getElementById('accNombre').value, apellido: document.getElementById('accApellido').value, email: document.getElementById('accEmail').value, telefono: document.getElementById('accTelefono').value };
+      users[idx] = { ...users[idx], nombre, apellido, email, telefono };
       currentUser = users[idx];
       saveUsers();
       document.getElementById('userDisplayName').textContent = currentUser.nombre;

@@ -12,9 +12,7 @@
 
 <body>
 
-  <!-- ═══════════════ SOLO ADMIN ═══════════════ -->
-  <!-- Si no es admin, el JS lo redirige al index      -->
-
+  <!-- SOLO ADMIN (el JS redirige si no es admin) -->
   <div class="dash-layout">
 
     <!-- ── SIDEBAR ── -->
@@ -104,7 +102,7 @@
             </div>
           </div>
 
-          <!-- graficos -->
+          <!-- gráficos -->
           <div class="chart-grid">
             <div class="chart-card">
               <div class="chart-card-header">
@@ -259,8 +257,7 @@
               </thead>
               <tbody id="tbodyClients">
                 <tr>
-                  <td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">Sin clientes registrados
-                  </td>
+                  <td colspan="6" style="text-align:center;padding:2rem;color:var(--muted)">Sin clientes registrados</td>
                 </tr>
               </tbody>
             </table>
@@ -274,7 +271,7 @@
 
 
   <!-- ══════════════════════════════════════════
-       MODAL: PRODUCTO (CRUD Dashboard)
+       MODAL: PRODUCTO (CRUD Dashboard)  ← CORREGIDO
   ══════════════════════════════════════════ -->
   <div class="modal-overlay hidden" id="dashProductModal">
     <div class="modal-box">
@@ -303,6 +300,20 @@
           </select>
         </div>
       </div>
+      <!-- ──────── NUEVOS CAMPOS: Tipo y Tallas ──────── -->
+      <div class="form-group">
+        <label>Tipo de zapatilla</label>
+        <select id="dashProductType">
+          <option value="">Seleccionar</option>
+          <option value="deportiva">Deportiva</option>
+          <option value="urbana">Urbana</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Tallas disponibles</label>
+        <div class="tallas-checkbox-grid" id="dashTallasCheckboxGrid"></div>
+      </div>
+      <!-- ──────── FIN NUEVOS CAMPOS ──────── -->
       <div class="form-group">
         <label>URL de imagen</label>
         <input type="text" id="dashProductImage" placeholder="img/producto.jpg" />
@@ -325,12 +336,13 @@
 
 
   <!-- ══════════════════════════════════════════
-       JAVASCRIPT
+       JAVASCRIPT  ← CORREGIDO (16 productos)
   ══════════════════════════════════════════ -->
   <script>
 
     // ── CONSTANTES ADMIN ──
     const ADMIN = { id: 0, nombre: 'Admin', apellido: 'Gonter', email: 'admin@gonter.com', password: 'gonter2026', role: 'admin' };
+    const TALLAS = ['4.5', '5', '6', '6.5', '7', '7.5', '8', '8.5', '9', '9.5', '10', '10.5', '11', '12'];
 
     // ── GUARD: solo admin puede entrar ──
     const dashSession = JSON.parse(localStorage.getItem('gonter_session') || 'null');
@@ -341,11 +353,26 @@
 
     // ── DATOS ──
     let sales = JSON.parse(localStorage.getItem('gonter_sales') || '[]');
+    // ══════════════════════════════════════════
+    // PRODUCTOS: AHORA SON LOS 16 COMPLETOS
+    // ══════════════════════════════════════════
     let products = JSON.parse(localStorage.getItem('gonter_products') || 'null') || [
-      { id: 1, name: 'Nike Air Max', price: 399.90, image: 'img/zapatilla1.jpg', category: 'hombre', desc: 'Comodidad extrema para uso diario.' },
-      { id: 2, name: 'Adidas Ultraboost', price: 499.90, image: 'img/zapatilla2.jpg', category: 'hombre', desc: 'Máximo retorno de energía.' },
-      { id: 3, name: 'Puma Velocity', price: 349.90, image: 'img/zapatilla3.jpg', category: 'mujer', desc: 'Velocidad y ligereza en cada zancada.' },
-      { id: 4, name: 'New Balance 530', price: 429.90, image: 'img/zapatilla4.jpg', category: 'mujer', desc: 'Clásico retro con tecnología moderna.' },
+      { id: 1, name: 'Nike Air Max 90', price: 429.90, image: 'img/zapatilla1.jpg', category: 'hombre', type: 'urbana', desc: 'Ícono urbano con amortiguación Air.', tallas: ['7','7.5','8','8.5','9','9.5','10','10.5','11','12'] },
+      { id: 2, name: 'Adidas Ultraboost 23', price: 549.90, image: 'img/zapatilla2.jpg', category: 'hombre', type: 'deportiva', desc: 'Máximo retorno de energía para running.', tallas: ['6.5','7','7.5','8','8.5','9','9.5','10','10.5','11','12'] },
+      { id: 3, name: 'Puma RS-X', price: 379.90, image: 'img/zapatilla3.jpg', category: 'hombre', type: 'urbana', desc: 'Diseño retro con tecnología RS.', tallas: ['5','6','6.5','7','7.5','8','8.5','9','9.5','10','10.5','11'] },
+      { id: 4, name: 'New Balance 574', price: 399.90, image: 'img/zapatilla4.jpg', category: 'hombre', type: 'urbana', desc: 'Clásico atemporal para el día a día.', tallas: ['4.5','5','6','6.5','7','7.5','8','8.5','9','9.5','10','10.5'] },
+      { id: 5, name: 'Nike Air Force 1', price: 389.90, image: 'img/zapatilla5.jpg', category: 'mujer', type: 'urbana', desc: 'El clásico indiscutible en versión femenina.', tallas: ['5','6','6.5','7','7.5','8','8.5','9'] },
+      { id: 6, name: 'Adidas Superstar', price: 349.90, image: 'img/zapatilla6.jpg', category: 'mujer', type: 'urbana', desc: 'Diseño icónico con puntera de concha.', tallas: ['5','6','6.5','7','7.5','8','8.5','9','9.5'] },
+      { id: 7, name: 'Puma Cali Dream', price: 329.90, image: 'img/zapatilla7.jpg', category: 'mujer', type: 'urbana', desc: 'Estilo californiano con suela plataforma.', tallas: ['5','6','6.5','7','7.5','8','8.5','9'] },
+      { id: 8, name: 'New Balance 327', price: 459.90, image: 'img/zapatilla8.jpg', category: 'mujer', type: 'deportiva', desc: 'Retro running con toque moderno.', tallas: ['5','6','6.5','7','7.5','8','8.5','9','9.5'] },
+      { id: 9, name: 'Nike Court Borough', price: 259.90, image: 'img/zapatilla9.jpg', category: 'ninos', type: 'urbana', desc: 'Resistente y cómoda para el día a día.', tallas: ['4.5','5','6','6.5','7'] },
+      { id: 10, name: 'Adidas Advantage', price: 239.90, image: 'img/zapatilla10.jpg', category: 'ninos', type: 'deportiva', desc: 'Perfecta para educación física.', tallas: ['4.5','5','6','6.5','7','7.5'] },
+      { id: 11, name: 'Puma Rebound', price: 279.90, image: 'img/zapatilla11.jpg', category: 'ninos', type: 'urbana', desc: 'Estilo urbano juvenil con tecnología cómoda.', tallas: ['5','6','6.5','7','7.5','8'] },
+      { id: 12, name: 'New Balance 680v6', price: 219.90, image: 'img/zapatilla12.jpg', category: 'ninos', type: 'deportiva', desc: 'Amortiguación Fresh Foam para los más activos.', tallas: ['4.5','5','6','6.5','7'] },
+      { id: 13, name: 'Nike Downshifter 12', price: 199.90, image: 'img/zapatilla13.jpg', category: 'oferta', type: 'deportiva', desc: 'Running accesible con soporte total. 40% OFF', tallas: ['7','7.5','8','8.5','9','9.5','10','10.5','11','12'] },
+      { id: 14, name: 'Adidas Runfalcon 3', price: 179.90, image: 'img/zapatilla14.jpg', category: 'oferta', type: 'deportiva', desc: 'Ligereza a precio increíble. 35% OFF', tallas: ['6','6.5','7','7.5','8','8.5','9','9.5','10','10.5','11'] },
+      { id: 15, name: 'Puma Smash v2', price: 149.90, image: 'img/zapatilla15.jpg', category: 'oferta', type: 'urbana', desc: 'Estilo clásico a precio mínimo. 50% OFF', tallas: ['5','6','6.5','7','7.5','8','8.5','9','9.5'] },
+      { id: 16, name: 'Reebok Classic Leather', price: 219.90, image: 'img/zapatilla16.jpg', category: 'oferta', type: 'urbana', desc: 'El legendario modelo de los 80s. 30% OFF', tallas: ['6','6.5','7','7.5','8','8.5','9','9.5','10','10.5','11','12'] },
     ];
     let users = JSON.parse(localStorage.getItem('gonter_users') || '[]');
 
@@ -419,7 +446,7 @@
             <td><strong>#${o.id}</strong></td>
             <td>${o.customerName}</td>
             <td><strong>S/ ${o.total.toFixed(2)}</strong></td>
-            <td><span class="badge badge-${o.paymentMethod}">${payLabel(o.paymentMethod)}</span></td>
+            <td><span class="badge badge-${o.paymentMethod || 'desconocido'}">${payLabel(o.paymentMethod)}</span></td>
             <td><span class="badge badge-confirmado">Confirmado</span></td>
             <td>${formatDate(o.date)}</td>
           </tr>`).join('');
@@ -524,10 +551,7 @@
       const ctx = document.getElementById('chartTopProducts').getContext('2d');
       if (chartTopProd) chartTopProd.destroy();
 
-      if (sorted.length === 0) {
-        // No hay datos: mostrar mensaje vacío sobre el canvas
-        return;
-      }
+      if (sorted.length === 0) return;
 
       chartTopProd = new Chart(ctx, {
         type: 'bar',
@@ -583,7 +607,7 @@
           <td style="font-size:0.78rem">${o.customerEmail}</td>
           <td style="font-size:0.78rem">${o.items.map(i => `${i.name} ×${i.qty}`).join(', ')}</td>
           <td><strong>S/ ${o.total.toFixed(2)}</strong></td>
-          <td><span class="badge badge-${o.paymentMethod}">${payLabel(o.paymentMethod)}</span></td>
+          <td><span class="badge badge-${o.paymentMethod || 'desconocido'}">${payLabel(o.paymentMethod)}</span></td>
           <td><span class="badge badge-confirmado">Confirmado</span></td>
           <td style="font-size:0.78rem">${formatDate(o.date)}</td>
         </tr>`).join('');
@@ -591,7 +615,7 @@
 
 
     // ══════════════════════════════════════════
-    // VISTA: PRODUCTOS (CRUD)
+    // VISTA: PRODUCTOS (CRUD) ← CORREGIDO
     // ══════════════════════════════════════════
 
     function renderDashProducts() {
@@ -612,9 +636,10 @@
         <div class="dash-product-card">
           <img class="dash-product-img" src="${p.image}" alt="${p.name}" onerror="this.src='img/placeholder.jpg'" />
           <div class="dash-product-info">
-            <p class="category">${p.category}</p>
+            <p class="category">${p.category}${p.type ? ' · ' + p.type : ''}</p>
             <h4>${p.name}</h4>
             <p class="price">S/ ${p.price.toFixed(2)}</p>
+            <p class="product-tallas" style="font-size:0.75rem;color:var(--muted)">Tallas: ${(p.tallas || []).join(', ') || 'Sin tallas'}</p>
             <div class="dash-product-actions">
               <button class="btn-edit-sm" onclick="openEditDashProduct(${p.id})">
                 <i class="fas fa-edit"></i> Editar
@@ -634,8 +659,10 @@
       document.getElementById('dashProductName').value = '';
       document.getElementById('dashProductPrice').value = '';
       document.getElementById('dashProductCategory').value = '';
+      document.getElementById('dashProductType').value = '';
       document.getElementById('dashProductImage').value = '';
       document.getElementById('dashProductDesc').value = '';
+      renderDashTallasCheckboxes([]);
       clearError('dashProductError');
       openModal('dashProductModal');
     }
@@ -649,8 +676,10 @@
       document.getElementById('dashProductName').value = p.name;
       document.getElementById('dashProductPrice').value = p.price;
       document.getElementById('dashProductCategory').value = p.category;
+      document.getElementById('dashProductType').value = p.type || '';
       document.getElementById('dashProductImage').value = p.image;
       document.getElementById('dashProductDesc').value = p.desc || '';
+      renderDashTallasCheckboxes(p.tallas || []);
       clearError('dashProductError');
       openModal('dashProductModal');
     }
@@ -659,22 +688,24 @@
       const name = document.getElementById('dashProductName').value.trim();
       const price = parseFloat(document.getElementById('dashProductPrice').value);
       const category = document.getElementById('dashProductCategory').value;
+      const type = document.getElementById('dashProductType').value;
       const image = document.getElementById('dashProductImage').value.trim();
       const desc = document.getElementById('dashProductDesc').value.trim();
+      const tallas = Array.from(document.querySelectorAll('#dashTallasCheckboxGrid input:checked')).map(cb => cb.value);
 
       clearError('dashProductError');
 
-      if (!name || isNaN(price) || !category || !image) {
-        showError('dashProductError', 'Completa todos los campos obligatorios.');
+      if (!name || isNaN(price) || !category || !image || !type || tallas.length === 0) {
+        showError('dashProductError', 'Completa todos los campos obligatorios (incluyendo tipo y al menos una talla).');
         return;
       }
 
       if (editingDashProductId) {
         const idx = products.findIndex(p => p.id === editingDashProductId);
-        products[idx] = { ...products[idx], name, price, category, image, desc };
+        products[idx] = { ...products[idx], name, price, category, type, image, desc, tallas };
         showToast('Producto actualizado.', 'success');
       } else {
-        products.push({ id: Date.now(), name, price, category, image, desc });
+        products.push({ id: Date.now(), name, price, category, type, image, desc, tallas });
         showToast('Producto añadido.', 'success');
       }
 
@@ -689,6 +720,17 @@
       saveProducts();
       renderDashProducts();
       showToast('Producto eliminado.', 'info');
+    }
+
+
+    function renderDashTallasCheckboxes(selected = []) {
+      const container = document.getElementById('dashTallasCheckboxGrid');
+      if (!container) return;
+      container.innerHTML = TALLAS.map(t => `
+        <label class="talla-checkbox-label">
+          <input type="checkbox" value="${t}" ${selected.includes(t) ? 'checked' : ''} /> ${t}
+        </label>
+      `).join('');
     }
 
 
@@ -728,7 +770,7 @@
 
     function payLabel(m) {
       const map = { tarjeta: 'Tarjeta', yape: 'Yape/Plin', transferencia: 'Transf.', efectivo: 'Efectivo' };
-      return map[m] || m;
+      return map[m] || 'Desconocido';
     }
 
     function formatDate(iso) {
